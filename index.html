@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script type="importmap">{ "imports": { "playcanvas": "./vendor/playcanvas.mjs" } }</script>
+  <link rel="stylesheet" href="styles.css?v=f1ffa653">
+  <script type="importmap">{"imports": {"playcanvas": "./vendor/playcanvas.mjs", "./src/activities.js": "./src/activities.js?v=f1ffa653", "./src/align.js": "./src/align.js?v=f1ffa653", "./src/audio.js": "./src/audio.js?v=f1ffa653", "./src/emoji.js": "./src/emoji.js?v=f1ffa653", "./src/i18n.js": "./src/i18n.js?v=f1ffa653", "./src/icons.js": "./src/icons.js?v=f1ffa653", "./src/learn.js": "./src/learn.js?v=f1ffa653", "./src/ui.js": "./src/ui.js?v=f1ffa653"}}</script>
 </head>
 <body>
   <canvas id="app" aria-label="360° / 3D"></canvas>
@@ -137,6 +137,17 @@
     </div>
   </div>
 
-  <script type="module" src="src/main.js"></script>
+  <!-- ============ start over? (an own dialog: in-app browsers block window.confirm) ============ -->
+  <div id="reset-ask" class="modal hidden" role="alertdialog" aria-modal="true" aria-labelledby="ra-text">
+    <div class="modal-card">
+      <p id="ra-text" class="ask-text" data-i18n="resetConfirm"></p>
+      <div class="row">
+        <button id="ra-no" class="btn btn-soft" data-icon="x"><span data-i18n="close"></span></button>
+        <button id="ra-yes" class="btn btn-go" data-icon="restart"><span data-i18n="reset"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js?v=f1ffa653"></script>
 </body>
 </html>

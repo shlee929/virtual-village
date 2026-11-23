@@ -238,6 +238,13 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
 
   function setStage(id) { S = stageById(id); hint = false; P.skip = 0; render(); }
   function reset() { P = fresh(); hint = false; save(); render(); renderLanding(); }
+  // another tab changed or cleared the progress: follow it, so this tab does not write its older copy back later
+  window.addEventListener('storage', (e) => {
+    if (e.key !== KEY && e.key !== null) return;
+    P = loadProgress(); hint = false;
+    render(); renderLanding();
+    if (S) refresh();
+  });
 
   // ---------------------------------------------------------------- wiring
   $('#btn-listen').addEventListener('click', () => sayTarget({ quiet: false }));      // "where is ...?" in Nepali

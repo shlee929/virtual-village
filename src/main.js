@@ -20,7 +20,7 @@
 import * as pc from 'playcanvas';
 import { t, L, getLang, setLangValue, toDeva, UI_LANGS } from './i18n.js';
 import { icon } from './icons.js';
-import { $, esc, closeModal, topModal } from './ui.js';
+import { $, esc, openModal, closeModal, topModal } from './ui.js';
 import { emojiImg } from './emoji.js';
 import { setAudioIndex, stopVoice } from './audio.js';
 import { createLearning } from './learn.js';
@@ -750,7 +750,7 @@ function pickLang(e) {
 
 // ---------------------------------------------------------------- boot
 try {
-  const res = await fetch('assets/tour.json');
+  const res = await fetch('assets/tour.json', { cache: 'no-cache' });      // always ask whether it changed (a deploy may be minutes old)
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   state.tour = await res.json();
 } catch (err) {
@@ -764,7 +764,14 @@ learning = createLearning({
   onLeaveStage: toLanding,
 });
 
-$('#btn-reset').addEventListener('click', () => { if (confirm(t('resetConfirm'))) { learning.reset(); state.node = null; } });
+$('#btn-reset').addEventListener('click', () => openModal($('#reset-ask'), '#ra-no'));
+$('#ra-no').addEventListener('click', () => closeModal($('#reset-ask')));
+$('#ra-yes').addEventListener('click', () => {
+  closeModal($('#reset-ask'));
+  learning.reset();
+  state.node = null;
+  $('.stage-card')?.focus();
+});
 $('#btn-home').addEventListener('click', toLanding);
 $('#btn-passport').addEventListener('click', () => learning.openPassport());
 $('#landing-passport').addEventListener('click', () => learning.openPassport());
@@ -775,9 +782,8 @@ document.addEventListener('pointerdown', (e) => { if (!e.target.closest?.('#lang
 // a backdrop click closes a modal only if the press also started on the backdrop
 let pressedOn = null;
 document.addEventListener('pointerdown', (e) => { pressedOn = e.target; }, true);
-['word-card', 'activity', 'passport', 'stage-intro'].forEach((id) => $('#' + id).addEventListener('click', (e) => {
+['word-card', 'activity', 'passport', 'stage-intro', 'reset-ask'].forEach((id) => $('#' + id).addEventListener('click', (e) => {
   if (e.target.id !== id || pressedOn !== e.target) return;
-  if (id === 'stage-intro') { closeModal(e.target); return; }
   if (id === 'word-card') learning.closeWord(); else closeModal(e.target);
 }));
 document.querySelectorAll('[data-icon]').forEach((el) => el.insertAdjacentHTML('afterbegin', icon(el.dataset.icon)));

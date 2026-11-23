@@ -3,8 +3,8 @@
    very little text: pictures, dots and the guide's voice carry the instructions.
    Layout: the stage select fills a 16:9 screen (six cards in one row); phones get a 2-column grid
    and a bottom sheet in the tour. The 360 photos / 3D view are never filtered.
-   Font: Malgun Gothic (Windows) everywhere. It has no Devanagari, so Nepali and Tharu use Mukta; phones have no
-   Malgun Gothic (it may not be published as a web font) and use Apple SD Gothic Neo or Noto Sans KR instead.
+   Font: Malgun Gothic (Windows) everywhere. It has no Devanagari, so Nepali and Tharu use Mukta; phones and Macs
+   have no Malgun Gothic (it may not be published as a web font) and all use the web font Noto Sans KR instead.
    Emoji are picture files (assets/emoji), the same on every device. */
 :root {
   --ink: #16202e; --ink-2: #566173; --ink-3: #98a1b0;
@@ -28,7 +28,7 @@
   --gap: 16px;
   --sheet-h: 0px;            /* height of the phone bottom sheet, set from main.js */
 
-  --f-body: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", "Noto Sans KR", "Mukta", sans-serif;
+  --f-body: "Malgun Gothic", "맑은 고딕", "Noto Sans KR", "Mukta", sans-serif;
   --f-display: var(--f-body);
   --f-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;   /* only if a picture file is missing */
 
@@ -232,11 +232,11 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 .hs-obj .pin { position: relative; width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: var(--sun); color: var(--ink);
   box-shadow: 0 0 0 4px #fff, 0 8px 16px rgba(0, 0, 0, .35); }
 .hs-obj .pin .ic { stroke-width: 3; }
-.hs-obj.active .pin::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 4px solid var(--sun); animation: pulse 1.8s ease-out infinite; }
+.hs-obj.active .pin::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 4px solid #fff; animation: pulse 1.8s ease-out infinite; }
 .hs-obj.found .pin { width: 38px; height: 38px; background: var(--leaf); color: #fff; }
 .hs-obj.found .pin .ic { width: 20px; height: 20px; }
 @keyframes pulse { from { transform: scale(1); opacity: .95; } to { transform: scale(1.7); opacity: 0; } }
-.hs-obj.is-hint .pin { box-shadow: 0 0 0 4px #fff, 0 0 0 12px rgba(255, 197, 61, .7), 0 8px 16px rgba(0, 0, 0, .35); }
+.hs-obj.is-hint .pin { box-shadow: 0 0 0 4px #fff, 0 0 0 12px rgba(255, 255, 255, .75), 0 8px 16px rgba(0, 0, 0, .35); }
 
 /* 2D picture stickers standing in the 360 scene; font-size (= projected height) is set every frame */
 .hs-stk { display: block; line-height: 1; }
@@ -257,22 +257,16 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 .stk-badge { position: absolute; top: -4px; right: -12px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
   font: 800 19px/1 var(--f-display); color: var(--ink); background: var(--sun); box-shadow: 0 0 0 3px #fff, 0 4px 8px rgba(0, 0, 0, .3); }
 .stk-badge .ic { width: 17px; height: 17px; stroke-width: 3.2; }
-/* still to be found: the outline glows (a copy under the picture; only its opacity changes) and two little stars twinkle */
-.hs-stk.active .stk-art { filter: drop-shadow(0 2px 0 #ffe27a) drop-shadow(0 -2px 0 #ffe27a) drop-shadow(2px 0 0 #ffe27a) drop-shadow(-2px 0 0 #ffe27a) drop-shadow(0 0 5px #ffb300); }
-.hs-stk.active .stk-glow { position: absolute; inset: 0; will-change: opacity; filter: drop-shadow(0 0 6px #ffb300) drop-shadow(0 0 12px #ffc53d) drop-shadow(0 0 26px #ffb300);
+/* still to be found: the outline glows white (a copy under the picture; only its opacity changes) */
+.hs-stk.active .stk-art { filter: drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 0 5px rgba(255, 255, 255, .85)); }
+.hs-stk.active .stk-glow { position: absolute; inset: 0; opacity: .85; will-change: opacity; filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px #fff) drop-shadow(0 0 26px #fff);
   animation: bob 3.4s ease-in-out infinite, glow .9s ease-in-out infinite alternate; }
-@keyframes glow { from { opacity: 0; } to { opacity: 1; } }
-.hs-stk.active::before, .hs-stk.active::after { content: ""; position: absolute; z-index: 1; width: clamp(12px, .2em, 30px); height: clamp(12px, .2em, 30px); background: #fff8dc; pointer-events: none;
-  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation: twinkle 1.6s ease-in-out infinite; }
-.hs-stk.active::before { left: -.1em; top: .02em; }
-.hs-stk.active::after { right: -.1em; top: .42em; animation-delay: -.8s; }
-@keyframes twinkle { 0%, 100% { transform: scale(.2) rotate(0); opacity: 0; } 50% { transform: scale(1.15) rotate(45deg); opacity: 1; } }
+@keyframes glow { from { opacity: 0; } to { opacity: .85; } }
 .hs-stk.found .stk-badge { background: var(--leaf); color: #fff; width: 28px; height: 28px; }
 .hs-stk.found .stk-art { animation: none; opacity: .92; }
 /* (the picture and its glow copy share the first duration, so they move together) */
 .hs-stk:hover .stk-art, .hs-stk:focus-visible .stk-art { animation-duration: 1.2s, .6s; }
 .hs-stk.is-hint .stk-art { animation-duration: 1.2s, .4s; }
-.hs-stk.is-hint::before, .hs-stk.is-hint::after { animation-duration: .7s; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5%); } }
 /* full-body people (assets/people): 1em = their height; they sway on their feet instead of hopping */
 .stk-art img.stk-figure { width: auto; height: 1em; }
@@ -381,6 +375,8 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 .word-chip .emo img:not(.emo-img) { width: 100%; height: 100%; object-fit: cover; }
 .word-chip small { font-family: var(--f-body); font-weight: 600; font-size: 13.5px; color: var(--ink-2); }
 #pp-stages { justify-self: center; }
+/* start over? */
+.ask-text { font-family: var(--f-display); font-weight: 700; font-size: 21px; line-height: 1.45; }
 
 /* ---------------------------------------------------------------- stage games */
 .act-card { width: min(1100px, 100%); max-height: calc(100dvh - 40px); overflow-y: auto; text-align: left; }
@@ -673,8 +669,8 @@ body.aligning #mission, body.aligning .hs-obj, body.aligning .hs-stk { display: 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
   .hs-obj.active .pin::after, #map-svg .hint-ring, .part-pin::after { display: none; }
-  /* no movement: the glow and the stars simply stay on */
+  /* no movement: the glow simply stays on */
   .hs-stk .stk-art { animation: none !important; }
-  .hs-stk.active::before, .hs-stk.active::after, .icon-btn.need::after { animation: none !important; opacity: 1; }
+  .icon-btn.need::after { animation: none !important; opacity: 1; }
   .spinner { animation: spin 1.6s linear infinite !important; animation-iteration-count: infinite !important; }
 }
