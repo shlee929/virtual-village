@@ -80,6 +80,7 @@
    "ko": "엄마",
    "emoji": "👩🏽",
    "person": true,
+   "figure": "assets/people/mother.svg",
    "size": 1.65,
    "say": {
     "ne": "म तिम्रो आमा हुँ। म घरमा खाना पकाउँछु।",
@@ -95,6 +96,7 @@
    "ko": "아빠",
    "emoji": "👨🏽",
    "person": true,
+   "figure": "assets/people/father.svg",
    "size": 1.75,
    "say": {
     "ne": "म तिम्रो बुबा हुँ। म खेतमा काम गर्छु।",
@@ -110,6 +112,7 @@
    "ko": "할머니",
    "emoji": "👵🏽",
    "person": true,
+   "figure": "assets/people/grandmother.svg",
    "size": 1.55,
    "say": {
     "ne": "म हजुरआमा हुँ। मलाई कथा सुनाउन मन पर्छ।",
@@ -125,6 +128,7 @@
    "ko": "할아버지",
    "emoji": "👴🏽",
    "person": true,
+   "figure": "assets/people/grandfather.svg",
    "size": 1.65,
    "say": {
     "ne": "म हजुरबुबा हुँ। म बिहान गाईलाई घाँस दिन्छु।",
@@ -140,6 +144,7 @@
    "ko": "농부",
    "emoji": "🧑🏽‍🌾",
    "person": true,
+   "figure": "assets/people/farmer.svg",
    "size": 1.7,
    "say": {
     "ne": "म किसान हुँ। म खेतमा धान फलाउँछु।",
@@ -155,6 +160,7 @@
    "ko": "선생님",
    "emoji": "🧑🏽‍🏫",
    "person": true,
+   "figure": "assets/people/teacher.svg",
    "size": 1.7,
    "say": {
     "ne": "म शिक्षक हुँ। म विद्यालयमा पढाउँछु।",
@@ -170,6 +176,7 @@
    "ko": "보건 요원",
    "emoji": "🧑🏽‍⚕️",
    "person": true,
+   "figure": "assets/people/health.svg",
    "size": 1.7,
    "say": {
     "ne": "म स्वास्थ्यकर्मी हुँ। म बिरामीलाई औषधि दिन्छु।",

@@ -63,6 +63,8 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
   const dotsLine = (s) => `<span class="dots-line" aria-hidden="true">${items(s).map((i) => `<i class="${isFound(i, s) ? 'on' : ''}"></i>`).join('')}</span>`;
 
   // ---------------------------------------------------------------- voice (recorded file > browser TTS)
+  // Nothing speaks on its own: the voice plays only when a 🔊 button or Rupa Didi is pressed
+  // (and, inside a game, in answer to a tap).
   function speak({ text, lang, key }, { quiet = true } = {}) {
     const how = say({ text, lang, key });
     if (!how && !quiet) toast(t('noVoice', L(tour.langs[lang])), 'warn');
@@ -122,7 +124,8 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
   function showWord(item) {
     const w = W(item);
     $('#word-card').style.setProperty('--stage', S?.color || 'var(--coral)');
-    $('#wc-media').innerHTML = w.pic ? `<img class="wc-img" src="${esc(w.pic)}" alt="">`
+    $('#wc-media').innerHTML = w.figure ? `<img class="wc-figure" src="${esc(w.figure)}" alt="">`
+      : w.pic ? `<img class="wc-img" src="${esc(w.pic)}" alt="">`
       : w.emoji ? `<div class="wc-sticker" aria-hidden="true">${esc(w.emoji)}</div>`
         : `<img class="wc-img" src="assets/cards/${esc(item)}.jpg" alt="" width="480" height="360">`;
     const gloss = getLang() === 'ko' && w.ko ? ` <small>${esc(w.ko)}</small>` : '';
@@ -141,13 +144,11 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
     };
     $('#wc-say').onclick = (e) => { if (e.target.closest('[data-say]')) speak({ text: w.say.ne, lang: 'ne', key: `${item}.say` }, { quiet: false }); };
     openModal($('#word-card'), '#wc-ok');
-    speak({ text: w.ne, lang: 'ne', key: item });
   }
   function closeWord() {
     stopVoice();
     closeModal($('#word-card'));
-    if (pendingAct) { pendingAct = false; setTimeout(openActivity, 300); return; }
-    setTimeout(() => sayTarget(), 250);
+    if (pendingAct) { pendingAct = false; setTimeout(openActivity, 300); }
   }
 
   // ---------------------------------------------------------------- stage game -> stamp
@@ -211,9 +212,8 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
     $('#si-tr').textContent = tr(S.title);
     $('#si-items').innerHTML = items().map((id) => `<li>${pic(id)}</li>`).join('');
     openModal($('#stage-intro'), '#si-start');
-    speak({ text: `${S.title.ne}। ${S.game.ne}।`, lang: 'ne', key: `${S.id}.title` });
   }
-  $('#si-start').addEventListener('click', () => { closeModal($('#stage-intro')); sayTarget(); });
+  $('#si-start').addEventListener('click', () => closeModal($('#stage-intro')));
   $('#si-back').addEventListener('click', () => { closeModal($('#stage-intro')); onLeaveStage(); });
 
   function setStage(id) { S = stageById(id); hint = false; pendingAct = false; P.skip = 0; render(); }
@@ -228,7 +228,7 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
     hint = true; render(); refresh();
     speak({ text: W(tg).thr, lang: 'thr', key: tg }, { quiet: false });
   });
-  $('#btn-other').addEventListener('click', () => { P.skip++; hint = false; save(); render(); refresh(); sayTarget(); });
+  $('#btn-other').addEventListener('click', () => { P.skip++; hint = false; save(); render(); refresh(); });
   $('#btn-act').addEventListener('click', openActivity);
   $('#wc-ok').addEventListener('click', closeWord);
   $('#pp-close').addEventListener('click', () => closeModal($('#passport')));
@@ -238,7 +238,7 @@ export function createLearning({ tour, refresh, toast, onPickStage, onLeaveStage
   $('#guide-hello-listen').addEventListener('click', () => speak({ text: tour.guide.hello.ne, lang: 'ne', key: 'guide.hello' }, { quiet: false }));
 
   return {
-    render, renderLanding, itemState, tapItem, hintItem, pendingNodeIds, openPassport, closeWord, sayTarget,
+    render, renderLanding, itemState, tapItem, hintItem, pendingNodeIds, openPassport, closeWord,
     showIntro, setStage, reset, stage: () => S,
   };
 }

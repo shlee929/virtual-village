@@ -221,10 +221,6 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 #map-svg .hint-ring { fill: none; stroke: var(--sun); stroke-width: 4; animation: ring 1.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes ring { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
 
-#bottombar { position: fixed; z-index: 10; bottom: calc(24px + var(--safe-b)); left: 50%; transform: translateX(-50%); display: flex; gap: 12px; }
-#bottombar .hud-btn { width: 60px; height: 60px; border-radius: 50%; }
-#bottombar .hud-btn .ic { width: 30px; height: 30px; stroke-width: 2.8; }
-#bottombar.single { display: none; }
 #walk-pad { position: fixed; z-index: 10; right: calc(24px + var(--safe-r)); bottom: calc(24px + var(--safe-b)); display: grid; justify-items: center; gap: 6px; }
 .pad-row { display: flex; gap: 6px; }
 .pad-btn { width: 60px; height: 60px; padding: 0; border: 0; border-radius: var(--r); display: grid; place-items: center; background: var(--glass); color: var(--ink);
@@ -277,6 +273,12 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 .hs-stk.is-hint .stk-art { filter: drop-shadow(0 0 4px var(--sun)) drop-shadow(0 0 12px var(--sun)) drop-shadow(0 6px 6px rgba(0, 0, 0, .35)); }
 .hs-stk:hover .stk-art, .hs-stk:focus-visible .stk-art { animation-duration: 1.2s; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5%); } }
+/* full-body people (assets/people): 1em = their height; they sway on their feet instead of hopping */
+.stk-art img.stk-figure { width: auto; height: 1em; }
+.hs-stk.figure .stk-art { animation-name: sway; }
+.hs-stk.figure .stk-shadow { width: .5em; }
+.hs-stk.figure .stk-badge { left: calc(50% + .14em); right: auto; }
+@keyframes sway { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
 
 /* ---------------------------------------------------------------- toast & loading */
 .toast { position: fixed; z-index: 60; left: 50%; top: calc(var(--gap) + 6px + var(--safe-t)); transform: translate(-50%, -14px); opacity: 0; pointer-events: none;
@@ -319,6 +321,7 @@ body:not(.in-tour) .tour-ui { display: none !important; }
 .wc-media { display: grid; place-items: center; align-self: stretch; min-height: 240px; border-radius: 22px; overflow: hidden;
   background: radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--stage) 22%, #fff) 0 40%, color-mix(in srgb, var(--stage) 8%, #fff) 75%); }
 .wc-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wc-figure { height: clamp(170px, 36vh, 320px); width: auto; filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .2)); animation: pop 480ms var(--spring); }
 .wc-sticker { font-family: var(--f-emoji); font-size: clamp(110px, 14vw, 170px); line-height: 1; filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .2)); animation: pop 480ms var(--spring); }
 .wc-text { display: grid; gap: 12px; }
 .tri { display: grid; gap: 8px; }
@@ -523,10 +526,7 @@ body.aligning #mission, body.aligning .hs-obj, body.aligning .hs-stk { display: 
   .sc-tr { font-size: 12.5px; }
   .dots-line { margin-top: 6px; }
 
-  /* tour: arrows in the top bar, the mission as a bottom sheet, small map under the top bar */
-  #bottombar { top: calc(var(--gap) + 3px + var(--safe-t)); bottom: auto; left: calc(var(--gap) + 56px + var(--safe-l)); transform: none; gap: 4px; }
-  #bottombar .hud-btn { width: 44px; height: 44px; border-radius: 50%; }
-  #bottombar .hud-btn .ic { width: 24px; height: 24px; }
+  /* tour: the mission as a bottom sheet, small map under the top bar */
   #mission { top: auto; bottom: calc(var(--gap) + var(--safe-b)); left: calc(var(--gap) + var(--safe-l)); right: calc(var(--gap) + var(--safe-r)); width: auto;
     padding: 10px 12px 12px; border-radius: 24px; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "dots dots" "target actions" "hint hint"; align-items: center; column-gap: 8px; }
   .m-head { display: none; }
@@ -555,6 +555,7 @@ body.aligning #mission, body.aligning .hs-obj, body.aligning .hs-stk { display: 
   .word-card { grid-template-columns: 1fr; gap: 14px; }
   .wc-media { min-height: 0; aspect-ratio: 16 / 10; }
   .wc-sticker { font-size: 110px; }
+  .wc-figure { height: 170px; }
   .tri-ne .tri-word { font-size: 38px; }
   .tri-word { font-size: 21px; }
   .act-card { max-height: calc(100dvh - 20px); }

@@ -313,13 +313,9 @@ function applyI18n() {
   learning.renderLanding();
   if (state.node) { updateWhere(); buildMinimap(); buildHotspots(); learning.render(); }
 }
+// moving between spots: the rings on the ground (and the minimap); no separate prev/next buttons
 function updateWhere() {
-  const n = state.node;
-  const ids = pathIds(), i = ids.indexOf(n.id);
-  $('#walk-pad').classList.toggle('hidden', !isKey(n) || state.busy);
-  $('#btn-prev').disabled = i <= 0;
-  $('#btn-next').disabled = i >= ids.length - 1;
-  $('#bottombar').classList.toggle('single', ids.length < 2);
+  $('#walk-pad').classList.toggle('hidden', !isKey(state.node) || state.busy);
 }
 
 // ---------------------------------------------------------------- hotspots (HTML overlay anchored in 3D)
@@ -365,10 +361,12 @@ function buildHotspots() {
     el.addEventListener('click', (e) => { e.stopPropagation(); learning.tapItem(sp.item); });
     const isSticker = !!(w.emoji || w.pic);
     if (isSticker) {
-      // people are face pictures, so they stand in the scene as role cards on a post (the PDF's "2D role cards")
+      // people stand as full-body figures (assets/people, tools/make_people.py); a person with only a face emoji
+      // falls back to a role card on a post
       const pic = w.pic ? `<img src="${esc(w.pic)}" alt="">` : esc(w.emoji);
-      const art = w.person ? `<span class="stk-card">${w.pic ? pic : `<span class="stk-face">${pic}</span>`}</span><span class="stk-post"></span>` : pic;
-      el.className = `hs hs-stk ${st}${ground ? ' on-ground' : ''}${w.person ? ' person' : ''}${hinted === sp.item ? ' is-hint' : ''}`;
+      const art = w.figure ? `<img class="stk-figure" src="${esc(w.figure)}" alt="">`
+        : w.person ? `<span class="stk-card">${w.pic ? pic : `<span class="stk-face">${pic}</span>`}</span><span class="stk-post"></span>` : pic;
+      el.className = `hs hs-stk ${st}${ground ? ' on-ground' : ''}${w.person ? ' person' : ''}${w.figure ? ' figure' : ''}${hinted === sp.item ? ' is-hint' : ''}`;
       el.style.setProperty('--stage', state.stage.color);   // setProperty: no HTML parsing involved
       el.innerHTML = `${ground ? '<span class="stk-shadow" aria-hidden="true"></span>' : ''}<span class="stk-art" aria-hidden="true">${art}</span>
         <span class="stk-badge" aria-hidden="true">${st === 'found' ? icon('check') : '?'}</span>`;
@@ -719,7 +717,7 @@ async function startStage(stageId, nodeId, { intro = true } = {}) {
   const node = (nodeId && inPath(nodeId) && nodeById(nodeId)) || nodeById(state.stage?.start || state.tour.start);
   view.pitch = -4; view.fov = 75;
   if (!(await enterNode(node, { faceYaw: faceYawFor(node) }))) return;
-  if (intro && state.stage) learning.showIntro(); else learning.sayTarget();
+  if (intro && state.stage) learning.showIntro();
 }
 function toLanding() {
   if (state.busy) return;
@@ -774,15 +772,13 @@ $('#btn-lang').addEventListener('click', () => toggleLangMenu());
 $('#lang-menu').addEventListener('click', pickLang);
 $('#lang-chips').addEventListener('click', pickLang);
 document.addEventListener('pointerdown', (e) => { if (!e.target.closest?.('#lang-menu, #btn-lang')) toggleLangMenu(false); });
-$('#btn-prev').addEventListener('click', () => stepPath(-1));
-$('#btn-next').addEventListener('click', () => stepPath(1));
 // a backdrop click closes a modal only if the press also started on the backdrop
 // (a card dragged in the match game and released outside must not close the game)
 let pressedOn = null;
 document.addEventListener('pointerdown', (e) => { pressedOn = e.target; }, true);
 ['word-card', 'activity', 'passport', 'stage-intro'].forEach((id) => $('#' + id).addEventListener('click', (e) => {
   if (e.target.id !== id || pressedOn !== e.target) return;
-  if (id === 'stage-intro') { closeModal(e.target); learning.sayTarget(); return; }
+  if (id === 'stage-intro') { closeModal(e.target); return; }
   if (id === 'word-card') learning.closeWord(); else closeModal(e.target);
 }));
 document.querySelectorAll('[data-icon]').forEach((el) => el.insertAdjacentHTML('afterbegin', icon(el.dataset.icon)));

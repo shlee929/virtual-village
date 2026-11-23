@@ -88,8 +88,7 @@ export function createActivities({ tour, speak, onFinish }) {
     feedback('');
     body().onclick = null; body().onpointerdown = null;
     ({ match, grow, count })[act.type](act);
-    openModal($('#activity'), '#act-listen');
-    sayNe(act.prompt.ne, `${stage.id}.prompt`);
+    openModal($('#activity'), '#act-listen');      // the instructions play only from the 🔊 button
   }
   $('#act-finish').addEventListener('click', () => {
     closeModal($('#activity'));
