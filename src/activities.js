@@ -1,13 +1,16 @@
 // Stage games: the "Proposed Game / Software Feature" column of the Grade 2 Game ideas. A stage's game
 // opens once every hotspot of that stage has been found.
-//   match : put cards on their places (who does what / tool -> body part / routine -> clock / animal -> home)
+//   match : several questions; each shows one sentence card and a few word cards, and the child picks the word
+//           card the sentence belongs to (who does what / tool -> body part / routine -> clock / animal -> home)
 //   grow  : plant a seed, water it, then touch the plant parts (root, stem, leaf, flower)
 //   count : fill the basket from a shopping list, counting in Nepali, then "how many in all?"
-// Cards can be tapped (card, then place) or dragged. Everything is a <button>, so Tab + Enter works too.
+// Everything is a <button>, so Tab + Enter works too.
 import { t, L, getLang, toDeva, NE_NUM, I18N } from './i18n.js';
+import { icon } from './icons.js';
+import { emojiImg } from './emoji.js';
 import { $, $$, esc, shuffle, openModal, closeModal } from './ui.js';
 
-const DRAG_START_PX = 8;
+const CHOICES = 4;             // word cards per question
 const EXTRA_IN_STALL = 5;      // decoys in the market stall, so children have to stop at the right number
 // Spoken guide lines (Nepali is the target language, so the voice is always Nepali)
 const SAY_NE = {
@@ -57,23 +60,26 @@ function plantSVG(s) {
 const PART_POS = { root: [50, 80], stem: [50, 55], leaf: [30, 46], flower: [50, 21] };
 
 /**
+ * onComplete: the game has been finished (called once, while its window is still open);
+ * onFinish: the child then pressed the stamp button.
  * @param {{ tour: object, speak: (o: {text: string, lang: string, key?: string}) => unknown,
- *           onFinish: (stage: object, result: {correct: number, total: number}) => void }} ctx
+ *           onComplete: (stage: object, result: {correct: number, total: number}) => void, onFinish: () => void }} ctx
  */
-export function createActivities({ tour, speak, onFinish }) {
+export function createActivities({ tour, speak, onComplete, onFinish }) {
   const W = (id) => tour.words[id];
   const body = () => $('#act-body');
   let run = null;                       // { stage, act, correct, total }
   const sayNe = (text, key) => speak({ text, lang: 'ne', key });
   const num = (n) => (getLang() === 'ne' ? toDeva(n) : String(n));
   const tr = (obj) => { const s = L(obj); return s === obj?.ne ? '' : s; };     // translation line, empty in the Nepali UI
-  const emo = (e) => `<span class="emo">${esc(e)}</span>`;
+  const emo = (e) => `<span class="emo">${emojiImg(e)}</span>`;
   const art = (w, id) => (w.pic ? `<img src="${esc(w.pic)}" alt="">` : w.emoji ? emo(w.emoji) : `<img src="assets/cards/${esc(id)}.jpg" alt="">`);
   function feedback(msg, kind = '') { const f = $('#act-feedback'); f.textContent = msg; f.className = `feedback ${kind}`; }
   function complete() {
     feedback(t('actDone'), 'ok');
+    onComplete(run.stage, { correct: run.correct, total: run.total });
     $('#act-finish').classList.remove('hidden');
-    requestAnimationFrame(() => $('#act-finish').focus());
+    requestAnimationFrame(() => { $('#act-finish').scrollIntoView({ block: 'nearest' }); $('#act-finish').focus(); });
   }
 
   function open(stage) {
@@ -86,113 +92,95 @@ export function createActivities({ tour, speak, onFinish }) {
     $('#act-listen').onclick = () => sayNe(act.prompt.ne, `${stage.id}.prompt`);
     $('#act-finish').classList.add('hidden');
     feedback('');
-    body().onclick = null; body().onpointerdown = null;
+    body().onclick = null;
     ({ match, grow, count })[act.type](act);
     openModal($('#activity'), '#act-listen');      // the instructions play only from the 🔊 button
   }
-  $('#act-finish').addEventListener('click', () => {
-    closeModal($('#activity'));
-    onFinish(run.stage, { correct: run.correct, total: run.total });
-  });
+  $('#act-finish').addEventListener('click', () => { closeModal($('#activity')); onFinish(); });
   $('#act-close').addEventListener('click', () => closeModal($('#activity')));
 
-  // ---------------------------------------------------------------- match
-  let drag = null;
-  let suppressClick = false;
+  // ---------------------------------------------------------------- match: one sentence card, several word cards
+  // The sentence has its answer word blanked out (act.read: it is shown whole, e.g. "at six o'clock" -> clock faces).
+  // A wrong card drops out and the child tries again; only a right first try counts. A piece's "not" keeps off cards
+  // that would fit its sentence as well.
   function match(act) {
     const sid = run.stage.id;
-    const targets = act.targets.map((tg) => {
-      if (tg.item) { const w = W(tg.item); return { id: tg.item, ne: w.ne, tr: tr(w), art: art(w, tg.item), key: tg.item }; }
-      return { id: tg.id, ne: tg.label.ne, tr: tr(tg.label), key: `${sid}.${tg.id}`,
-        art: tg.clock != null ? clockSVG(Number(tg.clock)) : emo(tg.emoji) };
+    const cards = act.targets.map((tg) => {
+      const label = tg.item ? W(tg.item) : tg.label;
+      const isClock = tg.clock != null;
+      return { id: tg.item || tg.id, label, key: tg.item || `${sid}.${tg.id}`, isClock,
+        art: tg.item ? art(label, tg.item) : isClock ? clockSVG(Number(tg.clock)) : emo(tg.emoji) };
     });
-    const pieces = act.pieces.map((pc) => {
-      if (pc.item) { const w = W(pc.item); return { ...pc, pid: pc.item, ne: w.ne, tr: tr(w), art: art(w, pc.item), key: pc.item }; }
-      return { ...pc, pid: pc.id, ne: pc.text.ne, tr: tr(pc.text), art: emo(pc.emoji), key: `${sid}.${pc.id}` };
-    });
-    run.total = pieces.length;
-    const tries = {};
-    let sel = null;
-    const line = (o) => `<span class="mt-txt"><span class="mt-ne" lang="ne">${esc(o.ne)}</span>${o.tr ? `<span class="mt-tr">${esc(o.tr)}</span>` : ''}</span>`;
-    body().innerHTML = `<div class="match"><ul class="mt-pieces">${shuffle(pieces).map((p) => `<li><button class="mt-piece" data-pid="${esc(p.pid)}" aria-pressed="false">${p.art}${line(p)}</button></li>`).join('')}</ul>
-      <ul class="mt-targets${act.ordered ? ' ordered' : ''}">${(act.ordered ? targets : shuffle(targets)).map((tg) => `<li class="mt-target" data-tid="${esc(tg.id)}">
-        <button class="mt-t-btn" data-tid="${esc(tg.id)}">${tg.art}${line(tg)}</button><div class="mt-slot"></div></li>`).join('')}</ul></div>`;
-    const pieceEl = (pid) => body().querySelector(`.mt-piece[data-pid="${CSS.escape(pid)}"]`);
-    const select = (pid) => {
-      sel = pid;
-      $$('.mt-piece', body()).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pid === pid)));
-      body().classList.toggle('picking', !!pid);
+    const cardOf = (id) => cards.find((c) => c.id === id);
+    const questions = act.ordered ? act.pieces : shuffle(act.pieces);
+    run.total = questions.length;
+    let i = 0, wrong = 0, solved = false;
+
+    // [before, answer word, after]; no answer word when nothing is blanked out
+    function split(p, lg) {
+      const s = p.say[lg] || '';
+      const word = act.read ? '' : (p.blank?.[lg] ?? cardOf(p.to).label[lg] ?? '');
+      const at = word ? s.toLowerCase().indexOf(word.toLowerCase()) : -1;
+      return at < 0 ? [s, '', ''] : [s.slice(0, at), s.slice(at, at + word.length), s.slice(at + word.length)];
+    }
+    const sentence = (p, lg) => {
+      const [a, w, b] = split(p, lg);
+      return `${esc(a)}${w ? `<span class="qz-blank" data-word="${esc(w)}"></span>` : ''}${esc(b)}`;
     };
-    function attempt(pid, tid) {
-      const p = pieces.find((x) => x.pid === pid), tg = targets.find((x) => x.id === tid);
-      const box = body().querySelector(`.mt-target[data-tid="${CSS.escape(tid)}"]`);
-      if (!p || !tg || !box) return;
-      tries[pid] = (tries[pid] || 0) + 1;
-      if (p.to !== tid) {
-        box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+    function listen(p) {
+      const [a, w, b] = split(p, 'ne');
+      const id = `${sid}.${p.item || p.id}`;
+      if (w && !solved) sayNe(`${a} … ${b}`, `${id}.q`); else sayNe(p.say.ne, `${id}.say`);
+    }
+    const optionHTML = (c) => `<li><button class="qz-opt${c.isClock ? ' pic-only' : ''}" data-id="${esc(c.id)}"${c.isClock ? ` aria-label="${esc(c.label.ne)}"` : ''}>
+        <span class="qz-pic" aria-hidden="true">${c.art}</span><span class="qz-word" lang="ne">${esc(c.label.ne)}</span>${tr(c.label) ? `<span class="qz-wtr">${esc(tr(c.label))}</span>` : ''}</button></li>`;
+    function show() {
+      const p = questions[i], answer = cardOf(p.to), lg = getLang();
+      wrong = 0; solved = false;
+      const others = shuffle(cards.filter((c) => c !== answer && !(p.not || []).includes(c.id))).slice(0, CHOICES - 1);
+      const last = i === questions.length - 1;
+      body().innerHTML = `<div class="quiz">
+        <ol class="qz-dots" aria-label="${esc(`${num(i + 1)}/${num(questions.length)}`)}">${questions.map((_, k) => `<li class="${k < i ? 'on' : k === i ? 'cur' : ''}"></li>`).join('')}</ol>
+        <div class="qz-card"><span class="qz-art" aria-hidden="true">${p.item ? art(W(p.item), p.item) : emo(p.emoji)}</span>
+          <div class="qz-txt"><p class="qz-ne" lang="ne">${sentence(p, 'ne')}</p>${lg !== 'ne' && p.say[lg] ? `<p class="qz-tr">${sentence(p, lg)}</p>` : ''}</div>
+          <button class="icon-btn qz-listen" aria-label="${esc(t('listen'))}">${icon('volume')}</button></div>
+        <ul class="qz-opts">${shuffle([answer, ...others]).map(optionHTML).join('')}</ul>
+        ${last ? '' : `<button class="btn btn-go btn-lg qz-next hidden"><span>${esc(t('next'))}</span>${icon('right')}</button>`}</div>`;
+      feedback('');
+    }
+    function pick(opt, p) {
+      const card = cardOf(opt.dataset.id);
+      if (card.id !== p.to) {
+        wrong++;
+        const byKeyboard = opt.matches(':focus-visible');
+        opt.disabled = true; opt.classList.add('wrong');
+        if (byKeyboard) $('.qz-opt:not(:disabled)', body())?.focus();      // a disabled button loses the focus
         feedback(t('actWrong'), 'warn');
-        sayNe(tg.ne, tg.key);
+        sayNe(card.label.ne, card.key);
         return;
       }
-      if (tries[pid] === 1) run.correct++;
-      const el = pieceEl(pid), li = el.parentElement;
-      el.disabled = true; el.classList.add('placed'); el.setAttribute('aria-pressed', 'false');
-      box.querySelector('.mt-slot').appendChild(el);
-      li.remove();
-      box.classList.add('filled');
-      select(null);
+      solved = true;
+      if (!wrong) run.correct++;
+      opt.classList.add('right');
+      $$('.qz-opt', body()).forEach((b) => { b.disabled = true; });
+      $$('.qz-blank', body()).forEach((b) => { b.textContent = b.dataset.word; b.classList.add('filled'); });
       feedback(t('actRight'), 'ok');
-      sayNe(p.say?.ne || `${p.ne}, ${tg.ne}`, `${sid}.${pid}.say`);
-      if (pieces.every((x) => pieceEl(x.pid)?.disabled)) complete();
+      sayNe(p.say.ne, `${sid}.${p.item || p.id}.say`);
+      const next = $('.qz-next', body());
+      if (!next) { complete(); return; }
+      next.classList.remove('hidden');
+      next.scrollIntoView({ block: 'nearest' });
+      next.focus();
     }
     body().onclick = (e) => {
-      if (suppressClick) { suppressClick = false; return; }
-      const pb = e.target.closest('.mt-piece');
-      if (pb) {
-        if (pb.disabled) return;
-        const pid = pb.dataset.pid, p = pieces.find((x) => x.pid === pid);
-        select(pid);                       // stays picked after a wrong try, so the child can try another place
-        sayNe(p.ne, p.key);
-        return;
-      }
-      const tb = e.target.closest('.mt-t-btn');
-      if (!tb) return;
-      if (sel) attempt(sel, tb.dataset.tid);
-      else { const tg = targets.find((x) => x.id === tb.dataset.tid); sayNe(tg.ne, tg.key); }
+      const p = questions[i];
+      if (e.target.closest('.qz-listen')) { listen(p); return; }
+      if (e.target.closest('.qz-next')) { i++; show(); $('.qz-listen', body()).focus(); return; }
+      const opt = e.target.closest('.qz-opt');
+      if (opt && !opt.disabled) pick(opt, p);
     };
-    body().onpointerdown = (e) => {
-      const pb = e.target.closest('.mt-piece');
-      if (!pb || pb.disabled || e.button > 0) return;
-      drag = { pb, pid: pb.dataset.pid, x0: e.clientX, y0: e.clientY, ghost: null, over: null, attempt };
-    };
+    show();
   }
-  window.addEventListener('pointermove', (e) => {
-    if (!drag) return;
-    if (!drag.ghost) {
-      if (Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) < DRAG_START_PX) return;
-      drag.ghost = drag.pb.cloneNode(true);
-      drag.ghost.classList.add('mt-ghost');
-      document.body.appendChild(drag.ghost);
-      drag.pb.classList.add('dragging');
-    }
-    drag.ghost.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    const over = document.elementFromPoint(e.clientX, e.clientY)?.closest('.mt-target') || null;
-    if (over !== drag.over) { drag.over?.classList.remove('over'); over?.classList.add('over'); drag.over = over; }
-  });
-  const endDrag = (e) => {
-    if (!drag) return;
-    const d = drag;
-    drag = null;
-    if (!d.ghost) return;                             // no movement: the click handler treats it as a tap
-    d.ghost.remove();
-    d.pb.classList.remove('dragging');
-    d.over?.classList.remove('over');
-    suppressClick = true;
-    setTimeout(() => { suppressClick = false; }, 0);
-    if (e.type === 'pointerup' && d.over) d.attempt(d.pid, d.over.dataset.tid);
-  };
-  window.addEventListener('pointerup', endDrag);
-  window.addEventListener('pointercancel', endDrag);
 
   // ---------------------------------------------------------------- grow
   function grow(act) {
@@ -203,13 +191,13 @@ export function createActivities({ tour, speak, onFinish }) {
     run.total = parts.length;
     body().innerHTML = `<div class="grow">
       <div class="garden"><svg class="garden-svg" viewBox="0 0 220 240" aria-hidden="true" focusable="false"></svg>
-        <div class="drops" aria-hidden="true"></div><div class="part-pins"></div></div>
+        <div class="drops" aria-hidden="true">${emojiImg('💧').repeat(3)}</div><div class="part-pins"></div></div>
       <div class="grow-side">
-        <div class="row"><button class="btn btn-secondary grow-btn" id="g-seed" aria-label="${esc(t('plantSeed'))}"><span class="emo">🌱</span></button>
-          <button class="btn btn-soft grow-btn" id="g-water" aria-label="${esc(t('water'))}" disabled><span class="emo">💧</span></button></div>
+        <div class="row"><button class="btn btn-secondary grow-btn" id="g-seed" aria-label="${esc(t('plantSeed'))}">${emo('🌱')}</button>
+          <button class="btn btn-soft grow-btn" id="g-water" aria-label="${esc(t('water'))}" disabled>${emo('💧')}</button></div>
         <p class="water-left" aria-hidden="true"></p><div class="grow-info" aria-live="polite"></div></div></div>`;
     const draw = () => { $('.garden-svg', body()).innerHTML = plantSVG(s); };
-    const showWater = (used) => { $('.water-left', body()).innerHTML = Array.from({ length: N }, (_, k) => `<i class="${k < used ? 'used' : ''}">💧</i>`).join(''); };
+    const showWater = (used) => { $('.water-left', body()).innerHTML = Array.from({ length: N }, (_, k) => `<i class="${k < used ? 'used' : ''}">${emojiImg('💧')}</i>`).join(''); };
     draw();
     $('#g-seed').onclick = () => {
       s = 1; draw();
@@ -242,6 +230,7 @@ export function createActivities({ tour, speak, onFinish }) {
       $('.grow-info', body()).innerHTML = `<p class="gi-word"><b lang="ne">${esc(p.w.ne)}</b><span lang="en">${esc(p.w.en)}</span>${getLang() === 'ko' ? `<span>${esc(p.w.ko)}</span>` : ''}</p>
         <p class="gi-say" lang="ne">${esc(p.say.ne)}</p>${tr(p.say) ? `<p class="tr-line">${esc(tr(p.say))}</p>` : ''}`;
       sayNe(`${p.w.ne}। ${p.say.ne}`, `${p.item}.say`);
+      if (seen.size === parts.length) return;            // already finished: just a look back
       seen.add(p.item);
       if (seen.size === parts.length) { run.correct = parts.length; complete(); }
     };
@@ -254,10 +243,10 @@ export function createActivities({ tour, speak, onFinish }) {
     let i = 0, got = 0;
     run.total = list.length + 1;
     body().innerHTML = `<div class="count">
-      <div class="shop"><span class="shop-icon" aria-hidden="true">📝</span><ol class="shop-list">${list.map((r, k) => `<li data-k="${k}">${emo(r.w.emoji)}
+      <div class="shop"><span class="shop-icon" aria-hidden="true">${emojiImg('📝')}</span><ol class="shop-list">${list.map((r, k) => `<li data-k="${k}">${emo(r.w.emoji)}
         <b>${toDeva(r.n)}</b><span lang="ne">${esc(r.w.ne)}</span><span class="tick" aria-hidden="true">✓</span></li>`).join('')}</ol></div>
       <div class="stall" role="group"></div>
-      <div class="basket"><span class="basket-icon" aria-hidden="true">🧺</span><div class="basket-items"></div>
+      <div class="basket"><span class="basket-icon" aria-hidden="true">${emojiImg('🧺')}</span><div class="basket-items"></div>
         <p class="counter"><b id="c-num">०</b><small id="c-word" lang="ne"></small></p></div>
       <div class="row"><button class="btn btn-secondary" id="c-done">✔ ${esc(t('countDone'))}</button></div>
       <div class="total-q hidden"></div></div>`;

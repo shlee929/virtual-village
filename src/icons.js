@@ -25,17 +25,3 @@ const P = {
 
 export const icon = (name, cls = '') =>
   `<svg class="ic ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${P[name]}</svg>`;
-
-// Rupa Didi, the Tharu teacher who guides the children (simple flat portrait: hair bun, tika, green kurta)
-export const AVATAR = `<svg class="avatar-svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-  <circle cx="32" cy="32" r="32" fill="#FDE68A"/>
-  <circle cx="32" cy="13" r="7" fill="#1E1714"/>
-  <path d="M15 35c0-13 8-21 17-21s17 8 17 21v12H15z" fill="#1E1714"/>
-  <circle cx="32" cy="35" r="13" fill="#C98A5E"/>
-  <path d="M19 31c3-8 8-12 13-12s10 4 13 12c-5-2-10-5-13-9-3 4-8 7-13 9z" fill="#1E1714"/>
-  <circle cx="32" cy="29.5" r="1.6" fill="#C2362B"/>
-  <circle cx="27" cy="36" r="1.8" fill="#1F1A17"/><circle cx="37" cy="36" r="1.8" fill="#1F1A17"/>
-  <path d="M27.5 41.5c2.6 2.2 6.4 2.2 9 0" stroke="#7F3020" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M18 64c1-9 7-13 14-13s13 4 14 13z" fill="#2F5D4A"/>
-  <path d="M22 54c5 5 15 5 20 0" stroke="#E3A23B" stroke-width="3" fill="none"/>
-</svg>`;

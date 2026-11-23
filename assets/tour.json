@@ -1,8 +1,8 @@
 {
  "title": {
-  "ne": "हाम्रो गाउँ",
-  "en": "Our Village",
-  "ko": "우리 마을",
+  "ne": "नेपाल भर्चुअल गाउँ",
+  "en": "Nepal Virtual Village",
+  "ko": "네팔 가상마을",
   "thr": "हमार गाउँ"
  },
  "school": {
@@ -977,6 +977,11 @@
     "en": "Meet the Villagers",
     "ko": "마을 사람들을 만나 봐요"
    },
+   "foundAll": {
+    "ne": "सबै मानिस भेटिए!",
+    "en": "You found all the people!",
+    "ko": "모든 사람을 다 찾았어요!"
+   },
    "placeShort": {
     "ne": "गाउँको बाटो",
     "en": "Village path",
@@ -1056,9 +1061,9 @@
    "activity": {
     "type": "match",
     "prompt": {
-     "ne": "कसले के गर्छ? कार्डलाई ठीक मान्छेमा राख।",
-     "en": "Who does what? Put each card on the right person.",
-     "ko": "누가 무엇을 할까요? 카드를 알맞은 사람에게 놓아요."
+     "ne": "वाक्यमा मिल्ने शब्द छान।",
+     "en": "Choose the word that fits the sentence.",
+     "ko": "문장에 알맞은 낱말 카드를 골라요."
     },
     "targets": [
      {
@@ -1127,6 +1132,9 @@
       "id": "water",
       "emoji": "🥛",
       "to": "grandmother",
+      "not": [
+       "mother"
+      ],
       "text": {
        "ne": "म पानी ल्याइदिन्छु",
        "en": "I bring her water",
@@ -1142,6 +1150,9 @@
       "id": "cook",
       "emoji": "🍲",
       "to": "mother",
+      "not": [
+       "grandmother"
+      ],
       "text": {
        "ne": "म खाना पकाउन सघाउँछु",
        "en": "I help her cook",
@@ -1174,6 +1185,11 @@
     "ne": "स्वस्थ बानी",
     "en": "Healthy Habits",
     "ko": "건강한 생활 습관"
+   },
+   "foundAll": {
+    "ne": "सबै सामान भेटिए!",
+    "en": "You found all the things!",
+    "ko": "모든 물건을 다 찾았어요!"
    },
    "placeShort": {
     "ne": "चापाकल र भान्सा",
@@ -1248,9 +1264,9 @@
    "activity": {
     "type": "match",
     "prompt": {
-     "ne": "कुन सामान शरीरको कुन भागका लागि? सामानलाई ठीक ठाउँमा राख।",
-     "en": "Which tool is for which body part? Put each tool in its place.",
-     "ko": "어떤 물건이 몸의 어디에 쓰일까요? 알맞은 곳에 놓아요."
+     "ne": "वाक्यमा मिल्ने शब्द छान।",
+     "en": "Choose the word that fits the sentence.",
+     "ko": "문장에 알맞은 낱말 카드를 골라요."
     },
     "targets": [
      {
@@ -1282,6 +1298,9 @@
      {
       "item": "soap",
       "to": "hands",
+      "not": [
+       "face"
+      ],
       "say": {
        "ne": "साबुनले हात धोऔँ।",
        "en": "Wash your hands with soap.",
@@ -1291,6 +1310,9 @@
      {
       "item": "nailcutter",
       "to": "nails",
+      "not": [
+       "hair"
+      ],
       "say": {
        "ne": "नङ काटौँ।",
        "en": "Cut your nails.",
@@ -1300,6 +1322,9 @@
      {
       "item": "comb",
       "to": "hair",
+      "blank": {
+       "ko": "머리"
+      },
       "say": {
        "ne": "काइँयोले कपाल कोरौँ।",
        "en": "Comb your hair.",
@@ -1309,6 +1334,12 @@
      {
       "item": "pump",
       "to": "face",
+      "not": [
+       "hands"
+      ],
+      "blank": {
+       "ne": "मुख"
+      },
       "say": {
        "ne": "सफा पानीले मुख धोऔँ।",
        "en": "Wash your face with clean water.",
@@ -1337,6 +1368,11 @@
     "ne": "गाउँमा मेरो दिन",
     "en": "My Village Day",
     "ko": "나의 하루"
+   },
+   "foundAll": {
+    "ne": "सबै सामान भेटिए!",
+    "en": "You found all the things!",
+    "ko": "모든 물건을 다 찾았어요!"
    },
    "placeShort": {
     "ne": "थारु घर",
@@ -1416,10 +1452,11 @@
    "activity": {
     "type": "match",
     "ordered": true,
+    "read": true,
     "prompt": {
-     "ne": "कुन काम कति बजे? कार्डलाई ठीक घडीमा राख।",
-     "en": "What do you do at what time? Put each card on the right clock.",
-     "ko": "어떤 일을 몇 시에 할까요? 카드를 알맞은 시계에 놓아요."
+     "ne": "वाक्यमा मिल्ने घडी छान।",
+     "en": "Choose the clock that fits the sentence.",
+     "ko": "문장에 알맞은 시계를 골라요."
     },
     "targets": [
      {
@@ -1568,6 +1605,11 @@
     "en": "Animal Homes & Helpers",
     "ko": "동물들의 집과 생활"
    },
+   "foundAll": {
+    "ne": "सबै जनावर र चरा भेटिए!",
+    "en": "You found all the animals and birds!",
+    "ko": "모든 동물과 새를 다 찾았어요!"
+   },
    "placeShort": {
     "ne": "गोठ र जङ्गलको छेउ",
     "en": "Shed & forest edge",
@@ -1606,7 +1648,7 @@
      "node": "ou_154450",
      "u": 0.12,
      "v": 0.36,
-     "dist": 9
+     "dist": 9.59
     },
     {
      "item": "elephant",
@@ -1637,15 +1679,15 @@
      "node": "ou_154641",
      "u": 0.625,
      "v": 0.632,
-     "dist": 3.85
+     "dist": 2.7
     }
    ],
    "activity": {
     "type": "match",
     "prompt": {
-     "ne": "कुन जनावर कहाँ बस्छ? जनावरलाई उसको घरमा पुर्‍याऊ।",
-     "en": "Where does each animal live? Take it home.",
-     "ko": "어떤 동물이 어디에 살까요? 동물을 집에 데려다줘요."
+     "ne": "वाक्यमा मिल्ने शब्द छान।",
+     "en": "Choose the word that fits the sentence.",
+     "ko": "문장에 알맞은 낱말 카드를 골라요."
     },
     "targets": [
      {
@@ -1716,6 +1758,9 @@
      {
       "item": "bird",
       "to": "nest",
+      "not": [
+       "forest"
+      ],
       "say": {
        "ne": "चरा गुँडमा बस्छ।",
        "en": "The bird lives in a nest.",
@@ -1734,6 +1779,9 @@
      {
       "item": "dog",
       "to": "house",
+      "blank": {
+       "en": "home"
+      },
       "say": {
        "ne": "कुकुर घरमा बस्छ।",
        "en": "The dog lives at home.",
@@ -1743,6 +1791,9 @@
      {
       "item": "cat",
       "to": "house",
+      "blank": {
+       "en": "home"
+      },
       "say": {
        "ne": "बिरालो घरमा बस्छ।",
        "en": "The cat lives at home.",
@@ -1771,6 +1822,11 @@
     "ne": "तराई रोपौँ, जोगाऔँ",
     "en": "Grow & Protect the Terai",
     "ko": "테라이를 가꾸고 보호해요"
+   },
+   "foundAll": {
+    "ne": "सबै बिरुवा र प्रकृतिका कुरा भेटिए!",
+    "en": "You found all the plants and nature!",
+    "ko": "모든 식물과 자연을 다 찾았어요!"
    },
    "placeShort": {
     "ne": "करेसाबारी र खेत",
@@ -1910,6 +1966,11 @@
     "ne": "हाट बजारको पसले",
     "en": "The Haat Bazaar Shopkeeper",
     "ko": "하트 바자르 가게 주인"
+   },
+   "foundAll": {
+    "ne": "सबै खानेकुरा भेटिए!",
+    "en": "You found all the food!",
+    "ko": "모든 음식을 다 찾았어요!"
    },
    "placeShort": {
     "ne": "हाट बजार",
@@ -2059,7 +2120,7 @@
    "id": "ou_154450",
    "label": "03",
    "zone": "lot",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_154450.jpg",
    "thumb": "assets/thumbs/ou_154450.jpg",
    "position": [
@@ -2073,13 +2134,27 @@
     "ou_154407",
     "ou_154607"
    ],
+   "splat": "assets/splats/ou_154450.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 10689052,
    "panoBytes": 1126167
   },
   {
    "id": "ou_154607",
    "label": "04",
    "zone": "lot",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_154607.jpg",
    "thumb": "assets/thumbs/ou_154607.jpg",
    "position": [
@@ -2093,13 +2168,27 @@
     "ou_154450",
     "ou_154641"
    ],
+   "splat": "assets/splats/ou_154607.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 11504430,
    "panoBytes": 1061782
   },
   {
    "id": "ou_154641",
    "label": "05",
    "zone": "lot",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_154641.jpg",
    "thumb": "assets/thumbs/ou_154641.jpg",
    "position": [
@@ -2113,6 +2202,20 @@
     "ou_154607",
     "ou_154719"
    ],
+   "splat": "assets/splats/ou_154641.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 11639891,
    "panoBytes": 1041607
   },
   {
@@ -2153,7 +2256,7 @@
    "id": "ou_154836",
    "label": "07",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_154836.jpg",
    "thumb": "assets/thumbs/ou_154836.jpg",
    "position": [
@@ -2167,13 +2270,27 @@
     "ou_154719",
     "ou_154936"
    ],
+   "splat": "assets/splats/ou_154836.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 10789664,
    "panoBytes": 982012
   },
   {
    "id": "ou_154936",
    "label": "08",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_154936.jpg",
    "thumb": "assets/thumbs/ou_154936.jpg",
    "position": [
@@ -2187,13 +2304,27 @@
     "ou_154836",
     "ou_155026"
    ],
+   "splat": "assets/splats/ou_154936.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 10213159,
    "panoBytes": 944149
   },
   {
    "id": "ou_155026",
    "label": "09",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155026.jpg",
    "thumb": "assets/thumbs/ou_155026.jpg",
    "position": [
@@ -2207,13 +2338,27 @@
     "ou_154936",
     "ou_155057"
    ],
+   "splat": "assets/splats/ou_155026.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 9375186,
    "panoBytes": 933781
   },
   {
    "id": "ou_155057",
    "label": "10",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155057.jpg",
    "thumb": "assets/thumbs/ou_155057.jpg",
    "position": [
@@ -2227,13 +2372,28 @@
     "ou_155026",
     "ou_155204"
    ],
+   "splat": "assets/splats/ou_155057.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 2,
+   "photoAtRest": true,
+   "splatBytes": 8098161,
    "panoBytes": 941309
   },
   {
    "id": "ou_155204",
    "label": "11",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155204.jpg",
    "thumb": "assets/thumbs/ou_155204.jpg",
    "position": [
@@ -2247,13 +2407,28 @@
     "ou_155057",
     "ou_155236"
    ],
+   "splat": "assets/splats/ou_155204.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 2,
+   "photoAtRest": true,
+   "splatBytes": 7424233,
    "panoBytes": 956840
   },
   {
    "id": "ou_155236",
    "label": "12",
    "zone": "road",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155236.jpg",
    "thumb": "assets/thumbs/ou_155236.jpg",
    "position": [
@@ -2267,13 +2442,28 @@
     "ou_155204",
     "ou_155310"
    ],
+   "splat": "assets/splats/ou_155236.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 2,
+   "photoAtRest": true,
+   "splatBytes": 7833197,
    "panoBytes": 963175
   },
   {
    "id": "ou_155310",
    "label": "13",
    "zone": "front",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155310.jpg",
    "thumb": "assets/thumbs/ou_155310.jpg",
    "position": [
@@ -2287,13 +2477,27 @@
     "ou_155236",
     "ou_155343"
    ],
+   "splat": "assets/splats/ou_155310.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 9633763,
    "panoBytes": 878217
   },
   {
    "id": "ou_155343",
    "label": "14",
    "zone": "front",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155343.jpg",
    "thumb": "assets/thumbs/ou_155343.jpg",
    "position": [
@@ -2307,13 +2511,27 @@
     "ou_155310",
     "ou_155419"
    ],
+   "splat": "assets/splats/ou_155343.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 10692092,
    "panoBytes": 914474
   },
   {
    "id": "ou_155419",
    "label": "15",
    "zone": "front",
-   "media": "360",
+   "media": "3dgs",
    "pano": "assets/panos/ou_155419.jpg",
    "thumb": "assets/thumbs/ou_155419.jpg",
    "position": [
@@ -2327,6 +2545,20 @@
     "ou_155343",
     "ou_155457"
    ],
+   "splat": "assets/splats/ou_155419.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 3,
+   "splatBytes": 10915142,
    "panoBytes": 1039480
   },
   {

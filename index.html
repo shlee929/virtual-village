@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#1b2535">
-  <title>हाम्रो गाउँ · Virtual Village</title>
+  <title>नेपाल भर्चुअल गाउँ · Nepal Virtual Village</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Jua&family=Mukta:wght@400;600;700&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="importmap">{ "imports": { "playcanvas": "./vendor/playcanvas.mjs" } }</script>
 </head>
@@ -20,9 +20,6 @@
   <section id="landing" class="screen" aria-labelledby="landing-title">
     <div class="land-bg" aria-hidden="true"></div>
     <header class="land-top">
-      <button id="guide-hello-listen" class="guide-btn" data-i18n-aria="listen">
-        <span class="avatar" id="landing-avatar"></span><span class="spk" data-icon="volume"></span>
-      </button>
       <div class="brand">
         <h1 id="landing-title" lang="ne"></h1>
         <p id="landing-title-sub"></p>
@@ -53,7 +50,7 @@
     <ol id="m-dots" class="dots" role="list"></ol>
     <div class="m-target">
       <button id="btn-listen" class="guide-btn" data-i18n-aria="listen">
-        <span class="avatar" id="guide-avatar"></span><span class="spk" data-icon="volume"></span>
+        <span class="avatar m-pic" id="m-pic"></span><span class="spk" data-icon="volume"></span>
       </button>
       <div id="m-word" class="m-word" aria-live="polite"></div>
     </div>
@@ -99,6 +96,7 @@
   <!-- ============ word card: Tharu -> Nepali -> English ============ -->
   <div id="word-card" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wc-ne">
     <div class="modal-card word-card">
+      <button id="wc-close" class="icon-btn" data-icon="x" data-i18n-aria="close"></button>
       <div id="wc-media" class="wc-media"></div>
       <div class="wc-text">
         <div id="wc-tri" class="tri"></div>

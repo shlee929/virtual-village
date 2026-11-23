@@ -4,15 +4,15 @@
 // walk between that stage's spots; its hotspots are real objects in the photo (pins) or 2D pictures
 // standing in the 360 scene (stickers, sized by distance so they keep their place when you walk in 3D).
 //
-// One space, two kinds of spot (tour.json -> nodes[*].media):
+// One space, two kinds of spot (tour.json -> nodes[*].media). Every spot used by a stage is "3dgs".
 //   "360"  : the spot is its 360 photo only (drawn as a background "skybox"); nothing 3D is loaded.
-//   "3dgs" : a key spot. Its near-field 3DGS splat is drawn on top of the same spot's 360 photo,
-//            so one frame mixes both: splats up close (real parallax when you walk), the photo for
-//            sky and far scenery. Walking is enabled only here. The viewer switches automatically
-//            from the spot type — there is no 360/3DGS toggle.
-// For proxy splats (built from a single photo, softer than the photo) the crisp photo is shown while
-// you stand on the capture point and the splat fades in as soon as you step away. Trained splats
-// (splatKind without "proxy") stay on all the time.
+//   "3dgs" : its near-field 3DGS splat is drawn on top of the same spot's 360 photo, so one frame
+//            mixes both: splats up close (real parallax when you walk), the photo for sky and far
+//            scenery. Walking is enabled only here. The viewer switches automatically from the spot
+//            type — there is no 360/3DGS toggle.
+// For proxy splats (built from a single photo, softer than the photo) and trained splats flagged
+// photoAtRest (artifacts on the capture point) the crisp photo is shown while you stand on the capture
+// point and the splat fades in as soon as you step away. Other trained splats stay on all the time.
 //
 // Conventions (shared with tools/*.py):
 //   equirect u,v -> lon=(u-.5)*2PI, lat=(.5-v)*PI; local dir = (cos lat sin lon, sin lat, -cos lat cos lon)
@@ -21,6 +21,7 @@ import * as pc from 'playcanvas';
 import { t, L, getLang, setLangValue, toDeva, UI_LANGS } from './i18n.js';
 import { icon } from './icons.js';
 import { $, esc, closeModal, topModal } from './ui.js';
+import { emojiImg } from './emoji.js';
 import { setAudioIndex, stopVoice } from './audio.js';
 import { createLearning } from './learn.js';
 import { createAlign } from './align.js';
@@ -222,7 +223,7 @@ const WB_ALWAYS = pc.WORKBUFFER_UPDATE_ALWAYS ?? 2;
 const WB_AUTO = pc.WORKBUFFER_UPDATE_AUTO ?? 0;
 const splats = new Map();      // id -> { entity, promise, fade, settled }
 const isKey = (n) => n?.media === '3dgs' && !!n.splat;
-const photoAtRest = (n) => (n.splatKind || '').startsWith('proxy');
+const photoAtRest = (n) => (n.splatKind || '').startsWith('proxy') || !!n.photoAtRest;   // photoAtRest: trained splat with artifacts on the capture point
 function ensureSplat(node) {
   let s = splats.get(node.id);
   if (s) return s.promise;
@@ -308,7 +309,7 @@ function applyI18n() {
   const title = state.tour.title;
   $('#landing-title').textContent = title.ne;
   $('#landing-title-sub').textContent = getLang() !== 'ne' ? L(title) : '';
-  document.title = `${title.ne} · Virtual Village`;
+  document.title = `${title.ne} · ${title.en}`;
   renderLangMenus();
   learning.renderLanding();
   if (state.node) { updateWhere(); buildMinimap(); buildHotspots(); learning.render(); }
@@ -339,9 +340,9 @@ function buildHotspots() {
   for (const id of n.links.filter(inPath)) {
     const m = nodeById(id);
     const el = document.createElement('button');
-    el.className = 'hs hs-nav' + (isKey(m) ? ' to-3d' : '');
+    el.className = 'hs hs-nav';
     el.setAttribute('aria-label', `${ids.indexOf(id) < ids.indexOf(n.id) ? t('prevSpot') : t('nextSpot')}: ${num(ids.indexOf(id) + 1)}`);
-    el.innerHTML = `<span class="ring">${icon('up')}</span>${isKey(m) ? '<span class="hs-label"><b>3D</b></span>' : ''}`;
+    el.innerHTML = `<span class="ring">${icon('up')}</span>`;
     el.addEventListener('click', (e) => { e.stopPropagation(); goTo(id); });
     const d = [m.position[0] - n.position[0], 0, m.position[2] - n.position[2]];
     const len = Math.hypot(d[0], d[2]);
@@ -363,13 +364,14 @@ function buildHotspots() {
     if (isSticker) {
       // people stand as full-body figures (assets/people, tools/make_people.py); a person with only a face emoji
       // falls back to a role card on a post
-      const pic = w.pic ? `<img src="${esc(w.pic)}" alt="">` : esc(w.emoji);
+      const pic = w.pic ? `<img src="${esc(w.pic)}" alt="">` : emojiImg(w.emoji);
       const art = w.figure ? `<img class="stk-figure" src="${esc(w.figure)}" alt="">`
         : w.person ? `<span class="stk-card">${w.pic ? pic : `<span class="stk-face">${pic}</span>`}</span><span class="stk-post"></span>` : pic;
       el.className = `hs hs-stk ${st}${ground ? ' on-ground' : ''}${w.person ? ' person' : ''}${w.figure ? ' figure' : ''}${hinted === sp.item ? ' is-hint' : ''}`;
       el.style.setProperty('--stage', state.stage.color);   // setProperty: no HTML parsing involved
-      el.innerHTML = `${ground ? '<span class="stk-shadow" aria-hidden="true"></span>' : ''}<span class="stk-art" aria-hidden="true">${art}</span>
-        <span class="stk-badge" aria-hidden="true">${st === 'found' ? icon('check') : '?'}</span>`;
+      // still to be found: a copy under the picture carries the glow, so only its opacity has to be animated
+      const glow = st === 'active' ? `<span class="stk-art stk-glow" aria-hidden="true">${art}</span>` : '';
+      el.innerHTML = `${ground ? '<span class="stk-shadow" aria-hidden="true"></span>' : ''}${glow}<span class="stk-art" aria-hidden="true">${art}</span>${st === 'found' ? `<span class="stk-badge" aria-hidden="true">${icon('check')}</span>` : ''}`;
       const size = w.size || 1;
       const top = ground ? [at[0], at[1] + size, at[2]] : [at[0], at[1] + size / 2, at[2]];
       hsLayer.appendChild(el);
@@ -423,12 +425,10 @@ function buildMinimap() {
     const [x, y] = mapProj(n.position);
     const on = ids.includes(n.id);
     const cls = ['node', on ? '' : 'off', pending.has(n.id) ? 'has-item' : ''].join(' ');
-    const title = on ? `<title>${num(ids.indexOf(n.id) + 1)}${isKey(n) ? ' (3D)' : ''}</title>` : '';
+    const title = on ? `<title>${num(ids.indexOf(n.id) + 1)}</title>` : '';
     if (hintSp?.node === n.id) html += `<circle class="hint-ring" cx="${x}" cy="${y}" r="11"/>`;
     const attrs = on ? `data-id="${n.id}" role="button" tabindex="-1"` : 'aria-hidden="true"';
-    html += isKey(n)
-      ? `<g class="${cls} key" ${attrs}>${title}<rect x="${x - 10}" y="${y - 8}" width="20" height="16" rx="5"/><text x="${x}" y="${y + 3.5}">3D</text></g>`
-      : `<circle class="${cls}" ${attrs} cx="${x}" cy="${y}" r="${on ? 6 : 3.5}">${title}</circle>`;
+    html += `<circle class="${cls}" ${attrs} cx="${x}" cy="${y}" r="${on ? 8 : 3.5}">${title}</circle>`;
   }
   svg.innerHTML = html;
   svg.querySelectorAll('[data-id]').forEach((c) => c.addEventListener('click', () => goTo(c.dataset.id)));
@@ -773,7 +773,6 @@ $('#lang-menu').addEventListener('click', pickLang);
 $('#lang-chips').addEventListener('click', pickLang);
 document.addEventListener('pointerdown', (e) => { if (!e.target.closest?.('#lang-menu, #btn-lang')) toggleLangMenu(false); });
 // a backdrop click closes a modal only if the press also started on the backdrop
-// (a card dragged in the match game and released outside must not close the game)
 let pressedOn = null;
 document.addEventListener('pointerdown', (e) => { pressedOn = e.target; }, true);
 ['word-card', 'activity', 'passport', 'stage-intro'].forEach((id) => $('#' + id).addEventListener('click', (e) => {
