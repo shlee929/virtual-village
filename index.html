@@ -4,195 +4,143 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1b2535">
   <title>हाम्रो गाउँ · Virtual Village</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Baloo+2:wght@500;700;800&family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Mukta:wght@400;600&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Jua&family=Mukta:wght@400;600;700&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="importmap">{ "imports": { "playcanvas": "./vendor/playcanvas.mjs" } }</script>
 </head>
 <body>
-  <canvas id="app" aria-label="360° / 3D view"></canvas>
+  <canvas id="app" aria-label="360° / 3D"></canvas>
   <div id="hotspots"></div>
 
   <!-- ============ landing: stage select ============ -->
   <section id="landing" class="screen" aria-labelledby="landing-title">
-    <div class="notebook">
-      <header class="landing-head">
-        <p class="kicker" data-i18n="kicker"></p>
+    <div class="land-bg" aria-hidden="true"></div>
+    <header class="land-top">
+      <button id="guide-hello-listen" class="guide-btn" data-i18n-aria="listen">
+        <span class="avatar" id="landing-avatar"></span><span class="spk" data-icon="volume"></span>
+      </button>
+      <div class="brand">
         <h1 id="landing-title" lang="ne"></h1>
-        <p class="title-sub" id="landing-title-sub"></p>
-        <p class="lede" data-i18n="lede"></p>
-      </header>
-
-      <div class="note">
-        <span class="tape" aria-hidden="true"></span>
-        <div class="avatar lg" id="landing-avatar"></div>
-        <div class="note-text">
-          <p class="say" id="guide-hello" lang="ne"></p>
-          <p class="say-tr" id="guide-hello-tr"></p>
-        </div>
-        <button id="guide-hello-listen" class="icon-btn" data-icon="volume" data-i18n-aria="listen"></button>
+        <p id="landing-title-sub"></p>
       </div>
-
-      <div class="lang-row">
-        <span class="lang-label" data-i18n="langLabel"></span>
-        <div class="chips" id="lang-chips" role="group" data-i18n-aria="langLabel"></div>
+      <div class="land-tools">
+        <div class="seg" id="lang-chips" role="group" data-i18n-aria="langLabel"></div>
+        <button id="landing-passport" class="hud-pill" data-icon="award" data-i18n-aria="passport"><span id="land-pp-count"></span></button>
+        <button id="btn-reset" class="hud-btn hidden" data-icon="restart" data-i18n-aria="reset"></button>
       </div>
-
-      <section aria-labelledby="stages-title">
-        <h2 class="section-title" id="stages-title" data-i18n="chooseStage"></h2>
-        <ol class="stage-grid" id="stage-grid"></ol>
-      </section>
-
-      <div class="landing-actions">
-        <button id="landing-passport" class="btn btn-soft" data-icon="book"><span data-i18n="passport"></span></button>
-        <button id="btn-reset" class="btn btn-ghost hidden" data-icon="restart"><span data-i18n="reset"></span></button>
-      </div>
-      <p class="fine" data-i18n="testNote"></p>
-    </div>
+    </header>
+    <ol class="stage-grid" id="stage-grid"></ol>
   </section>
 
   <!-- ============ tour chrome ============ -->
   <header id="topbar" class="tour-ui">
-    <button id="btn-home" class="icon-btn clay-sm" data-icon="map" data-i18n-aria="home"></button>
-    <div class="where clay-sm">
-      <div class="where-row"><strong id="place-name"></strong><span id="media-badge" class="media-badge"></span></div>
-      <span id="place-sub"></span>
-    </div>
+    <button id="btn-home" class="hud-btn" data-icon="map" data-i18n-aria="home"></button>
     <div class="top-actions">
-      <button id="btn-passport" class="pill clay-sm" data-icon="book" data-i18n-aria="passport"><span id="pp-count">0/6</span></button>
+      <button id="btn-passport" class="hud-pill" data-icon="award" data-i18n-aria="passport"><span id="pp-count">0/6</span></button>
       <div class="lang-wrap">
-        <button id="btn-lang" class="icon-btn clay-sm lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu"></button>
-        <div id="lang-menu" class="lang-menu clay hidden" role="group"></div>
+        <button id="btn-lang" class="hud-btn lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu"></button>
+        <div id="lang-menu" class="lang-menu hidden" role="group"></div>
       </div>
     </div>
   </header>
 
-  <aside id="mission" class="tour-ui clay" aria-labelledby="m-title">
-    <div class="m-head">
-      <span id="m-tag" class="m-tag"></span>
-      <h2 id="m-title"></h2>
-      <button id="m-collapse" class="icon-btn ghost" data-icon="up" aria-expanded="true" data-i18n-aria="missionToggle"></button>
+  <aside id="mission" class="tour-ui" aria-labelledby="m-title">
+    <div class="m-head"><span id="m-emoji" class="m-emoji" aria-hidden="true"></span><h2 id="m-title"></h2></div>
+    <ol id="m-dots" class="dots" role="list"></ol>
+    <div class="m-target">
+      <button id="btn-listen" class="guide-btn" data-i18n-aria="listen">
+        <span class="avatar" id="guide-avatar"></span><span class="spk" data-icon="volume"></span>
+      </button>
+      <div id="m-word" class="m-word" aria-live="polite"></div>
     </div>
-    <div class="m-progress" id="m-progress" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"><i></i></div>
-    <div class="m-body">
-      <ol id="m-steps" class="steps"></ol>
-      <div class="speech">
-        <div class="avatar" id="guide-avatar"></div>
-        <div class="bubble">
-          <p id="m-say" class="say" lang="ne"></p>
-          <p id="m-ask" class="say-tr"></p>
-        </div>
-      </div>
-      <div class="m-target">
-        <button id="btn-listen" class="btn btn-primary" data-icon="volume"><span data-i18n="listen"></span></button>
-        <div id="m-word" class="m-word" aria-live="polite"></div>
-      </div>
-      <p id="m-hint" class="m-hint hidden" aria-live="polite"></p>
-      <div class="m-actions">
-        <button id="btn-hint" class="btn btn-soft" data-icon="bulb"><span data-i18n="hint"></span></button>
-        <button id="btn-other" class="btn btn-soft" data-icon="shuffle"><span data-i18n="other"></span></button>
-        <button id="btn-act" class="btn btn-secondary hidden" data-icon="play"><span data-i18n="play"></span></button>
-      </div>
+    <p id="m-hint" class="m-hint hidden" aria-live="polite"></p>
+    <div class="m-actions">
+      <button id="btn-hint" class="hud-btn" data-icon="bulb" data-i18n-aria="hint"></button>
+      <button id="btn-other" class="hud-btn" data-icon="shuffle" data-i18n-aria="other"></button>
+      <button id="btn-act" class="btn btn-go hidden" data-icon="play"><span data-i18n="play"></span></button>
     </div>
   </aside>
 
-  <aside id="minimap" class="tour-ui clay" aria-labelledby="map-title">
+  <aside id="minimap" class="tour-ui" aria-labelledby="map-title">
     <h2 class="sr-only" id="map-title" data-i18n="mapLabel"></h2>
     <svg id="map-svg" viewBox="0 0 200 200"></svg>
-    <div class="map-legend" aria-hidden="true"><span class="lg lg-360">360°</span><span class="lg lg-3d">3D</span></div>
   </aside>
 
   <nav id="bottombar" class="tour-ui">
-    <button id="btn-prev" class="btn-round clay-sm" data-icon="left" data-i18n-aria="prevSpot"></button>
-    <p id="walk-hint" class="walk-hint clay-sm" data-icon="info"><span></span></p>
-    <button id="btn-next" class="btn-round clay-sm" data-icon="right" data-i18n-aria="nextSpot"></button>
+    <button id="btn-prev" class="hud-btn" data-icon="left" data-i18n-aria="prevSpot"></button>
+    <button id="btn-next" class="hud-btn" data-icon="right" data-i18n-aria="nextSpot"></button>
   </nav>
 
   <div id="walk-pad" class="tour-ui hidden">
-    <button data-move="f" data-walk class="pad-btn clay-sm" data-icon="up"></button>
+    <button data-move="f" data-walk class="pad-btn" data-icon="up"></button>
     <div class="pad-row">
-      <button data-move="l" data-walk class="pad-btn clay-sm" data-icon="left"></button>
-      <button data-move="b" data-walk class="pad-btn clay-sm" data-icon="down"></button>
-      <button data-move="r" data-walk class="pad-btn clay-sm" data-icon="right"></button>
+      <button data-move="l" data-walk class="pad-btn" data-icon="left"></button>
+      <button data-move="b" data-walk class="pad-btn" data-icon="down"></button>
+      <button data-move="r" data-walk class="pad-btn" data-icon="right"></button>
     </div>
   </div>
 
-  <div id="status" class="status hidden" role="status"></div>
+  <div id="status" class="status hidden" role="status"><span class="spinner" aria-hidden="true"></span><span class="sr-only" id="status-text"></span></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <!-- ============ stage intro ============ -->
   <div id="stage-intro" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="si-title">
-    <div class="modal-card clay intro-card">
-      <div class="si-head">
-        <span class="si-emoji" id="si-emoji" aria-hidden="true"></span>
-        <div class="si-titles">
-          <span id="si-tag" class="m-tag"></span>
-          <h3 id="si-title"></h3>
-          <p id="si-title-ne" class="si-ne" lang="ne"></p>
-        </div>
-      </div>
-      <dl class="si-info">
-        <div><dt data-i18n="gameLabel"></dt><dd id="si-game"></dd></div>
-        <div><dt data-i18n="placeLabel"></dt><dd id="si-place"></dd></div>
-        <div><dt data-i18n="goalLabel"></dt><dd id="si-goal"></dd></div>
-      </dl>
-      <div class="si-links"><h4 data-i18n="linked"></h4><ul id="si-subjects"></ul></div>
+    <div class="modal-card intro-card">
+      <div class="si-art"><span class="si-emoji" id="si-emoji" aria-hidden="true"></span></div>
+      <h3 id="si-title" lang="ne"></h3>
+      <p id="si-tr" class="tr-line"></p>
+      <ul id="si-items" class="si-items" aria-hidden="true"></ul>
       <div class="row">
-        <button id="si-back" class="btn btn-soft" data-icon="left"><span data-i18n="backToStages"></span></button>
-        <button id="si-start" class="btn btn-primary btn-lg" data-icon="play"><span data-i18n="startStage"></span></button>
+        <button id="si-back" class="icon-btn" data-icon="left" data-i18n-aria="backToStages"></button>
+        <button id="si-start" class="btn btn-go btn-lg" data-icon="play"><span data-i18n="startStage"></span></button>
       </div>
     </div>
   </div>
 
   <!-- ============ word card: Tharu -> Nepali -> English ============ -->
   <div id="word-card" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wc-ne">
-    <div class="modal-card clay word-card">
-      <p class="eyebrow" id="wc-eyebrow"></p>
+    <div class="modal-card word-card">
       <div id="wc-media" class="wc-media"></div>
-      <div id="wc-tri" class="tri"></div>
-      <p id="wc-gloss" class="wc-gloss hidden"></p>
-      <div id="wc-say" class="wc-expr"></div>
-      <dl id="wc-facts" class="facts"></dl>
-      <p class="say-it" data-i18n="sayIt"></p>
-      <button id="wc-ok" class="btn btn-primary btn-lg btn-block"><span data-i18n="ok"></span></button>
-      <p class="fine" id="wc-note"></p>
+      <div class="wc-text">
+        <div id="wc-tri" class="tri"></div>
+        <div id="wc-say" class="wc-say"></div>
+        <ul id="wc-facts" class="facts"></ul>
+        <button id="wc-ok" class="btn btn-go btn-lg btn-block" data-icon="check" data-i18n-aria="ok"></button>
+      </div>
     </div>
   </div>
 
   <!-- ============ stage game ============ -->
   <div id="activity" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="act-title">
-    <div class="modal-card clay act-card">
-      <div class="quiz-head">
-        <span id="act-tag" class="m-tag"></span>
-        <h3 id="act-title"></h3>
+    <div class="modal-card act-card">
+      <h3 id="act-title" class="sr-only"></h3>
+      <div class="act-head">
+        <button id="act-listen" class="icon-btn go" data-icon="volume" data-i18n-aria="listen"></button>
+        <div class="act-prompt"><p id="act-prompt-ne" lang="ne"></p><p id="act-prompt-tr" class="tr-line"></p></div>
         <button id="act-close" class="icon-btn ghost" data-icon="x" data-i18n-aria="close"></button>
       </div>
-      <div class="act-prompt">
-        <button id="act-listen" class="icon-btn primary" data-icon="volume" data-i18n-aria="listen"></button>
-        <div><p id="act-prompt-ne" lang="ne"></p><p id="act-prompt-tr" class="muted"></p></div>
-      </div>
       <div id="act-body"></div>
-      <p id="act-feedback" class="qz-feedback" role="status" aria-live="polite"></p>
-      <button id="act-finish" class="btn btn-secondary btn-lg btn-block hidden" data-icon="award"><span data-i18n="getStamp"></span></button>
+      <p id="act-feedback" class="feedback" role="status" aria-live="polite"></p>
+      <button id="act-finish" class="btn btn-go btn-lg hidden" data-icon="award"><span data-i18n="getStamp"></span></button>
     </div>
   </div>
 
   <!-- ============ passport ============ -->
   <div id="passport" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pp-title">
-    <div class="modal-card clay passport-card">
-      <p class="eyebrow" data-i18n="passport"></p>
-      <h3 id="pp-title" lang="ne">मेरो गाउँ राहदानी</h3>
-      <div id="pp-stamps" class="stamps"></div>
-      <p id="pp-msg" class="pp-msg hidden" role="status"></p>
-      <h4 data-i18n="wordsLearned"></h4>
-      <ul id="pp-words" class="word-chips"></ul>
-      <ul id="pp-acts" class="pp-quiz"></ul>
-      <div class="row">
-        <button id="pp-close" class="btn btn-soft"><span data-i18n="keepExploring"></span></button>
-        <button id="pp-stages" class="btn btn-primary hidden" data-icon="map"><span data-i18n="backToStages"></span></button>
+    <div class="modal-card passport-card">
+      <div class="pp-head">
+        <span class="pp-badge" data-icon="award" aria-hidden="true"></span>
+        <h3 id="pp-title" lang="ne">मेरो गाउँ राहदानी</h3>
+        <button id="pp-close" class="icon-btn ghost" data-icon="x" data-i18n-aria="close"></button>
       </div>
+      <p id="pp-msg" class="pp-msg hidden" role="status"></p>
+      <ol id="pp-stamps" class="stamps"></ol>
+      <ul id="pp-words" class="word-chips"></ul>
+      <button id="pp-stages" class="btn btn-go hidden" data-icon="map"><span data-i18n="backToStages"></span></button>
     </div>
   </div>
 

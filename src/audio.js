@@ -1,7 +1,7 @@
 // Voices for the learning content.
 // A recorded file wins (tour.audio[lang][key] <- assets/audio/<lang>/<key>.mp3, indexed by make_splats.py);
 // otherwise the browser's TTS. No browser has a Tharu voice, so until Tharu recordings exist a Tharu word is
-// read by a Nepali (or Hindi) voice as a rough stand-in; say() reports that so the UI can tell the teacher.
+// read by a Nepali (or Hindi) voice as a rough stand-in (say() returns 'approx'; the UI does not show it).
 const PREF = { ne: ['ne', 'hi'], thr: ['ne', 'hi'], en: ['en-us', 'en'] };
 let voices = [];
 let files = {};

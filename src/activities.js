@@ -69,7 +69,7 @@ export function createActivities({ tour, speak, onFinish }) {
   const tr = (obj) => { const s = L(obj); return s === obj?.ne ? '' : s; };     // translation line, empty in the Nepali UI
   const emo = (e) => `<span class="emo">${esc(e)}</span>`;
   const art = (w, id) => (w.pic ? `<img src="${esc(w.pic)}" alt="">` : w.emoji ? emo(w.emoji) : `<img src="assets/cards/${esc(id)}.jpg" alt="">`);
-  function feedback(msg, kind = '') { const f = $('#act-feedback'); f.textContent = msg; f.className = `qz-feedback ${kind}`; }
+  function feedback(msg, kind = '') { const f = $('#act-feedback'); f.textContent = msg; f.className = `feedback ${kind}`; }
   function complete() {
     feedback(t('actDone'), 'ok');
     $('#act-finish').classList.remove('hidden');
@@ -80,8 +80,7 @@ export function createActivities({ tour, speak, onFinish }) {
     const act = stage.activity;
     run = { stage, act, correct: 0, total: 0 };
     $('#activity').style.setProperty('--stage', stage.color);
-    $('#act-tag').textContent = t('stageN', num(stage.n));
-    $('#act-title').textContent = L(stage.game);
+    $('#act-title').textContent = L(stage.game);           // screen readers only
     $('#act-prompt-ne').textContent = act.prompt.ne;
     $('#act-prompt-tr').textContent = tr(act.prompt);
     $('#act-listen').onclick = () => sayNe(act.prompt.ne, `${stage.id}.prompt`);
@@ -104,7 +103,7 @@ export function createActivities({ tour, speak, onFinish }) {
   function match(act) {
     const sid = run.stage.id;
     const targets = act.targets.map((tg) => {
-      if (tg.item) { const w = W(tg.item); return { id: tg.item, ne: w.ne, thr: w.thr, tr: tr(w), art: art(w, tg.item), key: tg.item }; }
+      if (tg.item) { const w = W(tg.item); return { id: tg.item, ne: w.ne, tr: tr(w), art: art(w, tg.item), key: tg.item }; }
       return { id: tg.id, ne: tg.label.ne, tr: tr(tg.label), key: `${sid}.${tg.id}`,
         art: tg.clock != null ? clockSVG(Number(tg.clock)) : emo(tg.emoji) };
     });
@@ -115,11 +114,10 @@ export function createActivities({ tour, speak, onFinish }) {
     run.total = pieces.length;
     const tries = {};
     let sel = null;
-    const line = (o) => `<span class="mt-txt"><span class="mt-ne" lang="ne">${esc(o.ne)}</span>${o.thr ? `<span class="mt-thr" lang="thr">${esc(o.thr)}</span>` : ''}${o.tr ? `<span class="mt-tr">${esc(o.tr)}</span>` : ''}</span>`;
-    body().innerHTML = `<p class="act-howto">${esc(t('tapOrDrag'))}</p>
-      <ul class="mt-pieces">${shuffle(pieces).map((p) => `<li><button class="mt-piece" data-pid="${esc(p.pid)}" aria-pressed="false">${p.art}${line(p)}</button></li>`).join('')}</ul>
+    const line = (o) => `<span class="mt-txt"><span class="mt-ne" lang="ne">${esc(o.ne)}</span>${o.tr ? `<span class="mt-tr">${esc(o.tr)}</span>` : ''}</span>`;
+    body().innerHTML = `<div class="match"><ul class="mt-pieces">${shuffle(pieces).map((p) => `<li><button class="mt-piece" data-pid="${esc(p.pid)}" aria-pressed="false">${p.art}${line(p)}</button></li>`).join('')}</ul>
       <ul class="mt-targets${act.ordered ? ' ordered' : ''}">${(act.ordered ? targets : shuffle(targets)).map((tg) => `<li class="mt-target" data-tid="${esc(tg.id)}">
-        <button class="mt-t-btn" data-tid="${esc(tg.id)}">${tg.art}${line(tg)}</button><div class="mt-slot"></div></li>`).join('')}</ul>`;
+        <button class="mt-t-btn" data-tid="${esc(tg.id)}">${tg.art}${line(tg)}</button><div class="mt-slot"></div></li>`).join('')}</ul></div>`;
     const pieceEl = (pid) => body().querySelector(`.mt-piece[data-pid="${CSS.escape(pid)}"]`);
     const select = (pid) => {
       sel = pid;
@@ -144,7 +142,7 @@ export function createActivities({ tour, speak, onFinish }) {
       li.remove();
       box.classList.add('filled');
       select(null);
-      feedback(`${t('actRight')} ${p.say ? L(p.say) : ''}`, 'ok');
+      feedback(t('actRight'), 'ok');
       sayNe(p.say?.ne || `${p.ne}, ${tg.ne}`, `${sid}.${pid}.say`);
       if (pieces.every((x) => pieceEl(x.pid)?.disabled)) complete();
     }
@@ -208,16 +206,16 @@ export function createActivities({ tour, speak, onFinish }) {
       <div class="garden"><svg class="garden-svg" viewBox="0 0 220 240" aria-hidden="true" focusable="false"></svg>
         <div class="drops" aria-hidden="true"></div><div class="part-pins"></div></div>
       <div class="grow-side">
-        <div class="row"><button class="btn btn-secondary" id="g-seed"><span class="emo">🌱</span><span>${esc(t('plantSeed'))}</span></button>
-          <button class="btn btn-soft" id="g-water" disabled><span class="emo">💧</span><span>${esc(t('water'))}</span></button></div>
-        <p class="grow-status" aria-live="polite"></p><div class="grow-info" aria-live="polite"></div></div></div>`;
+        <div class="row"><button class="btn btn-secondary grow-btn" id="g-seed" aria-label="${esc(t('plantSeed'))}"><span class="emo">🌱</span></button>
+          <button class="btn btn-soft grow-btn" id="g-water" aria-label="${esc(t('water'))}" disabled><span class="emo">💧</span></button></div>
+        <p class="water-left" aria-hidden="true"></p><div class="grow-info" aria-live="polite"></div></div></div>`;
     const draw = () => { $('.garden-svg', body()).innerHTML = plantSVG(s); };
-    const status = (msg) => { $('.grow-status', body()).textContent = msg; };
+    const showWater = (used) => { $('.water-left', body()).innerHTML = Array.from({ length: N }, (_, k) => `<i class="${k < used ? 'used' : ''}">💧</i>`).join(''); };
     draw();
     $('#g-seed').onclick = () => {
       s = 1; draw();
       $('#g-seed').disabled = true; $('#g-water').disabled = false; $('#g-water').focus();
-      status(t('waterLeft', N));
+      showWater(0);
       sayNe(SAY_NE.seed, `${run.stage.id}.seed`);
     };
     $('#g-water').onclick = () => {
@@ -225,13 +223,14 @@ export function createActivities({ tour, speak, onFinish }) {
       drops.classList.remove('rain'); void drops.offsetWidth; drops.classList.add('rain');
       s = Math.min(s + 1, N + 1); draw();
       const left = N + 1 - s;
-      if (left > 0) { status(t('waterLeft', left)); sayNe(NE_NUM[s - 1], null); return; }
+      showWater(N - left);
+      if (left > 0) { sayNe(NE_NUM[s - 1], null); return; }
       $('#g-water').disabled = true;
-      status(t('tapParts'));
+      $('.water-left', body()).innerHTML = '';
       sayNe(SAY_NE.grown, `${run.stage.id}.grown`);
       $('.part-pins', body()).innerHTML = parts.map((p, i) => {
         const [x, y] = PART_POS[p.item] || [50, 50];
-        return `<button class="part-pin" data-item="${esc(p.item)}" style="left:${x}%;top:${y}%"><span class="pin-n">${toDeva(i + 1)}</span><span class="pin-w" lang="ne"></span></button>`;
+        return `<button class="part-pin" data-item="${esc(p.item)}" aria-label="${esc(p.w.ne)}" style="left:${x}%;top:${y}%"><span class="pin-n">${toDeva(i + 1)}</span><span class="pin-w" lang="ne"></span></button>`;
       }).join('');
       $('.part-pin', body())?.focus();
     };
@@ -241,9 +240,8 @@ export function createActivities({ tour, speak, onFinish }) {
       const p = parts.find((x) => x.item === pin.dataset.item);
       pin.classList.add('seen');
       pin.querySelector('.pin-w').textContent = p.w.ne;
-      $('.grow-info', body()).innerHTML = `<p class="gi-word"><b lang="ne">${esc(p.w.ne)}</b><span lang="thr">${esc(t('thrLabel'))}: ${esc(p.w.thr)}</span>
-        <span>${esc(t('enLabel'))}: ${esc(p.w.en)}</span>${tr(p.w) ? `<span>${esc(tr(p.w))}</span>` : ''}</p>
-        <p class="gi-say" lang="ne">${esc(p.say.ne)}</p>${tr(p.say) ? `<p class="muted">${esc(tr(p.say))}</p>` : ''}`;
+      $('.grow-info', body()).innerHTML = `<p class="gi-word"><b lang="ne">${esc(p.w.ne)}</b><span lang="en">${esc(p.w.en)}</span>${getLang() === 'ko' ? `<span>${esc(p.w.ko)}</span>` : ''}</p>
+        <p class="gi-say" lang="ne">${esc(p.say.ne)}</p>${tr(p.say) ? `<p class="tr-line">${esc(tr(p.say))}</p>` : ''}`;
       sayNe(`${p.w.ne}। ${p.say.ne}`, `${p.item}.say`);
       seen.add(p.item);
       if (seen.size === parts.length) { run.correct = parts.length; complete(); }
@@ -257,10 +255,10 @@ export function createActivities({ tour, speak, onFinish }) {
     let i = 0, got = 0;
     run.total = list.length + 1;
     body().innerHTML = `<div class="count">
-      <div class="shop"><h4>${esc(t('listTitle'))}</h4><ol class="shop-list">${list.map((r, k) => `<li data-k="${k}">${emo(r.w.emoji)}
+      <div class="shop"><span class="shop-icon" aria-hidden="true">📝</span><ol class="shop-list">${list.map((r, k) => `<li data-k="${k}">${emo(r.w.emoji)}
         <b>${toDeva(r.n)}</b><span lang="ne">${esc(r.w.ne)}</span><span class="tick" aria-hidden="true">✓</span></li>`).join('')}</ol></div>
       <div class="stall" role="group"></div>
-      <div class="basket"><h4>${esc(t('basket'))}</h4><div class="basket-items"></div>
+      <div class="basket"><span class="basket-icon" aria-hidden="true">🧺</span><div class="basket-items"></div>
         <p class="counter"><b id="c-num">०</b><small id="c-word" lang="ne"></small></p></div>
       <div class="row"><button class="btn btn-secondary" id="c-done">✔ ${esc(t('countDone'))}</button></div>
       <div class="total-q hidden"></div></div>`;
@@ -296,7 +294,7 @@ export function createActivities({ tour, speak, onFinish }) {
       const r = list[i];
       if (got !== r.n) {
         r.tries++;
-        feedback(t('needN', num(r.n), num(got)), 'warn');
+        feedback(t('needN', num(r.n)), 'warn');
         sayNe(`${NE_NUM[r.n]} वटा चाहिन्छ।`, null);
         return;
       }
@@ -317,7 +315,7 @@ export function createActivities({ tour, speak, onFinish }) {
       const q = $('.total-q', body());
       let wrong = 0;
       q.classList.remove('hidden');
-      q.innerHTML = `<p class="tq" lang="ne">${esc(I18N.ne.totalQ)}</p>${t('totalQ') !== I18N.ne.totalQ ? `<p class="muted">${esc(t('totalQ'))}</p>` : ''}
+      q.innerHTML = `<p class="tq" lang="ne">${esc(I18N.ne.totalQ)}</p>${t('totalQ') !== I18N.ne.totalQ ? `<p class="tr-line">${esc(t('totalQ'))}</p>` : ''}
         <div class="row">${act.total.options.map((n) => `<button class="btn btn-soft tq-opt" data-n="${n}"><b>${toDeva(n)}</b><small lang="ne">${NE_NUM[n]}</small></button>`).join('')}</div>`;
       sayNe(I18N.ne.totalQ, `${run.stage.id}.total`);
       q.onclick = (e) => {

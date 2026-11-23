@@ -31,7 +31,6 @@ const STICKER_MAX_VH = 0.42;         // ... and never fill the screen when close
 const MAP_MIN_SPAN = 26;             // metres shown by the minimap around a stage
 const params = new URLSearchParams(location.search);
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const coarsePointer = window.matchMedia('(pointer: coarse)');
 
 // ---------------------------------------------------------------- math
 const localDir = (u, v) => {
@@ -291,7 +290,7 @@ function toast(msg, kind = '') {
   clearTimeout(toast.tm);
   toast.tm = setTimeout(() => { el.className = 'toast'; }, 2800);
 }
-function status(msg) { const el = $('#status'); el.textContent = msg || ''; el.classList.toggle('hidden', !msg); }
+function status(msg) { $('#status-text').textContent = msg || ''; $('#status').classList.toggle('hidden', !msg); }
 
 function renderLangMenus() {
   const cur = getLang();
@@ -308,24 +307,16 @@ function applyI18n() {
   document.querySelectorAll('[data-walk]').forEach((el) => el.setAttribute('aria-label', t('walk', el.dataset.move)));
   const title = state.tour.title;
   $('#landing-title').textContent = title.ne;
-  $('#landing-title-sub').innerHTML = `<span lang="thr">${esc(t('thrLabel'))}: ${esc(title.thr)}</span>${getLang() !== 'ne' ? ` · <span>${esc(L(title))}</span>` : ''}`;
+  $('#landing-title-sub').textContent = getLang() !== 'ne' ? L(title) : '';
   document.title = `${title.ne} · Virtual Village`;
   renderLangMenus();
   learning.renderLanding();
   if (state.node) { updateWhere(); buildMinimap(); buildHotspots(); learning.render(); }
 }
 function updateWhere() {
-  const n = state.node, z = state.tour.zones[n.zone] || {};
+  const n = state.node;
   const ids = pathIds(), i = ids.indexOf(n.id);
-  $('#place-name').textContent = state.stage ? L(state.stage.placeShort) : L(z);
-  $('#place-sub').textContent = `${t('filmedAt', `${L(state.tour.school)} ${L(z)}`)} · ${t('spotOf', num(i + 1), num(ids.length))}`;
-  const key = isKey(n);
-  const badge = $('#media-badge');
-  badge.className = `media-badge ${key ? 'is-3d' : 'is-360'}`;
-  badge.innerHTML = `${icon(key ? 'box' : 'globe')}<span>${t(key ? 'media3d' : 'media360')}</span>`;
-  $('#walk-hint span').textContent = t((key ? 'hint3d' : 'hint360') + (coarsePointer.matches ? 'Touch' : ''));
-  $('#walk-hint').classList.toggle('is-3d', key);
-  $('#walk-pad').classList.toggle('hidden', !key || state.busy);
+  $('#walk-pad').classList.toggle('hidden', !isKey(n) || state.busy);
   $('#btn-prev').disabled = i <= 0;
   $('#btn-next').disabled = i >= ids.length - 1;
   $('#bottombar').classList.toggle('single', ids.length < 2);
@@ -487,7 +478,6 @@ function afterArrive() {
   updateWhere();
   buildHotspots();
   buildMinimap();
-  if (isKey(n)) toast(t('arrive3d', state.stage ? L(state.stage.placeShort) : L(state.tour.zones[n.zone])), 'info');
   // prefetch neighbour photos; splats for key spots within two hops (inside the stage)
   const keep = new Set();
   const ids = pathIds(), i = ids.indexOf(n.id);
@@ -540,7 +530,7 @@ async function moveTo(B, { fast = false, last = true } = {}) {
   const sA = isKey(A) ? splats.get(A.id) : null;
   let sB = null;
   if (isKey(B)) {
-    const slow = setTimeout(() => status(t('loading3d')), 250);
+    const slow = setTimeout(() => status(t('loading')), 250);
     try { sB = await ensureSplat(B); } catch (e) { console.warn('splat load failed; staying on the photo', e); }
     clearTimeout(slow); status('');
   }
@@ -726,7 +716,6 @@ async function startStage(stageId, nodeId, { intro = true } = {}) {
   learning.setStage(state.stage?.id);
   state.screen = 'tour';
   showTourUI(true);
-  if (window.innerWidth < 768) { $('#mission').classList.add('collapsed'); $('#m-collapse').setAttribute('aria-expanded', 'false'); }
   const node = (nodeId && inPath(nodeId) && nodeById(nodeId)) || nodeById(state.stage?.start || state.tour.start);
   view.pitch = -4; view.fov = 75;
   if (!(await enterNode(node, { faceYaw: faceYawFor(node) }))) return;
@@ -767,7 +756,7 @@ try {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   state.tour = await res.json();
 } catch (err) {
-  $('#landing .notebook').insertAdjacentHTML('afterbegin', `<p class="pp-msg">assets/tour.json could not be loaded (${esc(err.message)}). Run tools/make_splats.py and serve the folder with node serve.mjs.</p>`);
+  $('#landing').insertAdjacentHTML('beforeend', `<p class="pp-msg">assets/tour.json could not be loaded (${esc(err.message)}). Run tools/make_splats.py and serve the folder with node serve.mjs.</p>`);
   throw err;
 }
 setAudioIndex(state.tour.audio);
@@ -797,6 +786,8 @@ document.addEventListener('pointerdown', (e) => { pressedOn = e.target; }, true)
   if (id === 'word-card') learning.closeWord(); else closeModal(e.target);
 }));
 document.querySelectorAll('[data-icon]').forEach((el) => el.insertAdjacentHTML('afterbegin', icon(el.dataset.icon)));
+// phones: the mission is a bottom sheet; the 3D walk pad sits just above it
+new ResizeObserver(([e]) => document.documentElement.style.setProperty('--sheet-h', `${Math.ceil(e.target.offsetHeight)}px`)).observe($('#mission'));
 
 applyI18n();
 if (params.get('align')) {
