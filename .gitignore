@@ -1,0 +1,12 @@
+# This repository is the GitHub Pages site: only what the browser loads is published.
+# Everything else in this folder (tools, training data, notes, zip) stays local.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/styles.css
+!/src/
+!/vendor/
+!/assets/
+# Splat .ply files are not loaded by the app (it uses the .sog files)
+/assets/splats/*.ply

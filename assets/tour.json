@@ -1,0 +1,2359 @@
+{
+ "title": {
+  "ne": "हाम्रो गाउँ",
+  "en": "Our Village",
+  "ko": "우리 마을",
+  "thr": "हमार गाउँ"
+ },
+ "school": {
+  "ne": "हान्दोङ विश्वविद्यालय",
+  "en": "Handong Global University",
+  "ko": "한동대학교"
+ },
+ "guide": {
+  "name": {
+   "ne": "रुपा दिदी",
+   "en": "Rupa Didi",
+   "ko": "루파 디디"
+  },
+  "role": {
+   "ne": "थारु शिक्षिका",
+   "en": "Tharu teacher",
+   "ko": "타루족 선생님"
+  },
+  "hello": {
+   "ne": "नमस्ते! म रुपा दिदी हुँ। हाम्रो गाउँ घुम्न जाऔँ!",
+   "en": "Hello! I'm Rupa Didi. Let's go around our village!",
+   "ko": "안녕! 나는 루파 디디야. 우리 마을을 함께 둘러보자!"
+  }
+ },
+ "langs": {
+  "thr": {
+   "ne": "थारु",
+   "en": "Tharu",
+   "ko": "타루어"
+  },
+  "ne": {
+   "ne": "नेपाली",
+   "en": "Nepali",
+   "ko": "네팔어"
+  },
+  "en": {
+   "ne": "अङ्ग्रेजी",
+   "en": "English",
+   "ko": "영어"
+  }
+ },
+ "zones": {
+  "lot": {
+   "ne": "पार्किङ क्षेत्र",
+   "ko": "산학협력관 옆 주차장",
+   "en": "Parking lot by the Industry-Academia Hall"
+  },
+  "ebenezer": {
+   "ne": "एबेनेजर हलको ढोका",
+   "ko": "에벤에셀관 입구",
+   "en": "Ebenezer Hall entrance"
+  },
+  "road": {
+   "ne": "एबेनेजर हल अगाडिको बाटो",
+   "ko": "에벤에셀관 앞길",
+   "en": "Road by Ebenezer Hall"
+  },
+  "front": {
+   "ne": "सानहाक भवन अगाडि",
+   "ko": "산학협력관 앞",
+   "en": "In front of the Industry-Academia Hall"
+  },
+  "sanhak": {
+   "ne": "सानहाक भवनको ढोका",
+   "ko": "산학협력관 입구",
+   "en": "Industry-Academia Hall entrance"
+  }
+ },
+ "words": {
+  "mother": {
+   "thr": "दाई",
+   "thrSrc": "tcv-dangaura",
+   "ne": "आमा",
+   "en": "mother",
+   "ko": "엄마",
+   "emoji": "👩🏽",
+   "person": true,
+   "size": 1.65,
+   "say": {
+    "ne": "म तिम्रो आमा हुँ। म घरमा खाना पकाउँछु।",
+    "en": "I am your mother. I cook food at home.",
+    "ko": "나는 엄마예요. 집에서 밥을 지어요."
+   }
+  },
+  "father": {
+   "thr": "बाबा",
+   "thrSrc": "tcv",
+   "ne": "बुबा",
+   "en": "father",
+   "ko": "아빠",
+   "emoji": "👨🏽",
+   "person": true,
+   "size": 1.75,
+   "say": {
+    "ne": "म तिम्रो बुबा हुँ। म खेतमा काम गर्छु।",
+    "en": "I am your father. I work in the field.",
+    "ko": "나는 아빠예요. 밭에서 일해요."
+   }
+  },
+  "grandmother": {
+   "thr": "बुडौ",
+   "thrSrc": "tcv",
+   "ne": "हजुरआमा",
+   "en": "grandmother",
+   "ko": "할머니",
+   "emoji": "👵🏽",
+   "person": true,
+   "size": 1.55,
+   "say": {
+    "ne": "म हजुरआमा हुँ। मलाई कथा सुनाउन मन पर्छ।",
+    "en": "I am your grandmother. I love telling stories.",
+    "ko": "나는 할머니예요. 이야기 들려주는 걸 좋아해요."
+   }
+  },
+  "grandfather": {
+   "thr": "बुडु",
+   "thrSrc": "tcv",
+   "ne": "हजुरबुबा",
+   "en": "grandfather",
+   "ko": "할아버지",
+   "emoji": "👴🏽",
+   "person": true,
+   "size": 1.65,
+   "say": {
+    "ne": "म हजुरबुबा हुँ। म बिहान गाईलाई घाँस दिन्छु।",
+    "en": "I am your grandfather. I give grass to the cow in the morning.",
+    "ko": "나는 할아버지예요. 아침에 소에게 풀을 줘요."
+   }
+  },
+  "farmer": {
+   "thr": "किसान",
+   "thrSrc": "guess",
+   "ne": "किसान",
+   "en": "farmer",
+   "ko": "농부",
+   "emoji": "🧑🏽‍🌾",
+   "person": true,
+   "size": 1.7,
+   "say": {
+    "ne": "म किसान हुँ। म खेतमा धान फलाउँछु।",
+    "en": "I am a farmer. I grow rice in the field.",
+    "ko": "나는 농부예요. 논에서 벼를 길러요."
+   }
+  },
+  "teacher": {
+   "thr": "गुरु",
+   "thrSrc": "guess",
+   "ne": "शिक्षक",
+   "en": "teacher",
+   "ko": "선생님",
+   "emoji": "🧑🏽‍🏫",
+   "person": true,
+   "size": 1.7,
+   "say": {
+    "ne": "म शिक्षक हुँ। म विद्यालयमा पढाउँछु।",
+    "en": "I am a teacher. I teach at school.",
+    "ko": "나는 선생님이에요. 학교에서 가르쳐요."
+   }
+  },
+  "health": {
+   "thr": "स्वास्थ्यकर्मी",
+   "thrSrc": "guess",
+   "ne": "स्वास्थ्यकर्मी",
+   "en": "health worker",
+   "ko": "보건 요원",
+   "emoji": "🧑🏽‍⚕️",
+   "person": true,
+   "size": 1.7,
+   "say": {
+    "ne": "म स्वास्थ्यकर्मी हुँ। म बिरामीलाई औषधि दिन्छु।",
+    "en": "I am a health worker. I give medicine to sick people.",
+    "ko": "나는 보건 요원이에요. 아픈 사람에게 약을 줘요."
+   }
+  },
+  "pump": {
+   "thr": "चापाकल",
+   "thrSrc": "guess",
+   "ne": "चापाकल",
+   "en": "hand pump",
+   "ko": "손 펌프",
+   "emoji": "🚰",
+   "size": 1.3,
+   "say": {
+    "ne": "चापाकलको सफा पानीले हात र मुख धोऔँ।",
+    "en": "Wash your hands and face with clean water from the hand pump.",
+    "ko": "손 펌프의 깨끗한 물로 손과 얼굴을 씻어요."
+   }
+  },
+  "pot": {
+   "thr": "घैला",
+   "thrSrc": "guess",
+   "ne": "घैँटो",
+   "en": "clay pot",
+   "ko": "물항아리",
+   "emoji": "🏺",
+   "size": 0.8,
+   "say": {
+    "ne": "पिउने पानी सधैँ छोपेर राखौँ।",
+    "en": "Always keep drinking water covered.",
+    "ko": "마실 물은 항상 뚜껑을 덮어 둬요."
+   }
+  },
+  "soap": {
+   "thr": "साबुन",
+   "thrSrc": "guess",
+   "ne": "साबुन",
+   "en": "soap",
+   "ko": "비누",
+   "emoji": "🧼",
+   "size": 0.6,
+   "say": {
+    "ne": "खाना खानुअघि साबुनले हात धोऔँ।",
+    "en": "Wash your hands with soap before eating.",
+    "ko": "밥 먹기 전에 비누로 손을 씻어요."
+   }
+  },
+  "toothbrush": {
+   "thr": "ब्रस",
+   "thrSrc": "guess",
+   "ne": "ब्रस",
+   "en": "toothbrush",
+   "ko": "칫솔",
+   "emoji": "🪥",
+   "size": 0.6,
+   "say": {
+    "ne": "बिहान र बेलुका दाँत माझौँ।",
+    "en": "Brush your teeth in the morning and at night.",
+    "ko": "아침저녁으로 이를 닦아요."
+   }
+  },
+  "comb": {
+   "thr": "ककही",
+   "thrSrc": "guess",
+   "ne": "काइँयो",
+   "en": "comb",
+   "ko": "빗",
+   "emoji": "🪮",
+   "size": 0.55,
+   "say": {
+    "ne": "विद्यालय जानुअघि कपाल कोरौँ।",
+    "en": "Comb your hair before school.",
+    "ko": "학교 가기 전에 머리를 빗어요."
+   }
+  },
+  "nailcutter": {
+   "thr": "नेलकटर",
+   "thrSrc": "guess",
+   "ne": "नङ काट्ने",
+   "en": "nail clipper",
+   "ko": "손톱깎이",
+   "emoji": "✂️",
+   "size": 0.5,
+   "say": {
+    "ne": "हप्तामा एक पटक नङ काटौँ।",
+    "en": "Cut your nails once a week.",
+    "ko": "일주일에 한 번 손톱을 깎아요."
+   }
+  },
+  "teeth": {
+   "thr": "दाँत",
+   "thrSrc": "tcv",
+   "ne": "दाँत",
+   "en": "teeth",
+   "ko": "이",
+   "emoji": "🦷"
+  },
+  "hands": {
+   "thr": "हाथ",
+   "thrSrc": "tcv",
+   "ne": "हात",
+   "en": "hands",
+   "ko": "손",
+   "emoji": "🤲🏽"
+  },
+  "nails": {
+   "thr": "नोह",
+   "thrSrc": "guess",
+   "ne": "नङ",
+   "en": "nails",
+   "ko": "손톱",
+   "emoji": "💅🏽"
+  },
+  "hair": {
+   "thr": "बाल",
+   "thrSrc": "tcv",
+   "ne": "कपाल",
+   "en": "hair",
+   "ko": "머리카락",
+   "emoji": "💇🏽"
+  },
+  "face": {
+   "thr": "मुँह",
+   "thrSrc": "tcv",
+   "ne": "अनुहार",
+   "en": "face",
+   "ko": "얼굴",
+   "emoji": "🙂"
+  },
+  "bag": {
+   "thr": "झोरा",
+   "thrSrc": "guess",
+   "ne": "झोला",
+   "en": "school bag",
+   "ko": "책가방",
+   "emoji": "🎒",
+   "size": 0.75,
+   "say": {
+    "ne": "म झोला बोकेर विद्यालय जान्छु।",
+    "en": "I carry my bag to school.",
+    "ko": "나는 가방을 메고 학교에 가요."
+   },
+   "facts": [
+    {
+     "k": "posture",
+     "v": {
+      "ne": "सिधा बसेर पढौँ, सिधा भएर हिँडौँ।",
+      "en": "Sit up straight to study and walk tall.",
+      "ko": "바르게 앉아 공부하고, 바르게 걸어요."
+     }
+    }
+   ]
+  },
+  "clock": {
+   "thr": "घडी",
+   "thrSrc": "guess",
+   "ne": "घडी",
+   "en": "clock",
+   "ko": "시계",
+   "emoji": "🕗",
+   "size": 1.4,
+   "say": {
+    "ne": "घडीले समय बताउँछ। अहिले आठ बज्यो।",
+    "en": "A clock tells the time. It is eight o'clock.",
+    "ko": "시계는 시간을 알려 줘요. 지금은 8시예요."
+   }
+  },
+  "calendar": {
+   "thr": "पात्रो",
+   "thrSrc": "guess",
+   "ne": "पात्रो",
+   "en": "calendar",
+   "ko": "달력",
+   "emoji": "📅",
+   "size": 1.3,
+   "say": {
+    "ne": "आज कुन बार हो? पात्रो हेरौँ।",
+    "en": "What day is it today? Let's look at the calendar.",
+    "ko": "오늘은 무슨 요일일까요? 달력을 봐요."
+   },
+   "facts": [
+    {
+     "k": "days",
+     "v": {
+      "ne": "आइत · सोम · मङ्गल · बुध · बिही · शुक्र · शनि",
+      "en": "Sun · Mon · Tue · Wed · Thu · Fri · Sat",
+      "ko": "일 · 월 · 화 · 수 · 목 · 금 · 토"
+     }
+    }
+   ]
+  },
+  "door": {
+   "thr": "केवारी",
+   "thrSrc": "guess",
+   "ne": "ढोका",
+   "en": "door",
+   "ko": "문",
+   "fov": 30,
+   "say": {
+    "ne": "ढोका खोलेर भित्र आऊ।",
+    "en": "Open the door and come in.",
+    "ko": "문을 열고 들어와요."
+   }
+  },
+  "window": {
+   "thr": "खिरकी",
+   "thrSrc": "guess",
+   "ne": "झ्याल",
+   "en": "window",
+   "ko": "창문",
+   "fov": 30,
+   "say": {
+    "ne": "झ्याल खोल्दा उज्यालो आउँछ।",
+    "en": "Open the window and light comes in.",
+    "ko": "창문을 열면 빛이 들어와요."
+   }
+  },
+  "lamp": {
+   "thr": "बत्ती",
+   "thrSrc": "guess",
+   "ne": "बत्ती",
+   "en": "light",
+   "ko": "전등",
+   "fov": 22,
+   "say": {
+    "ne": "राति बत्ती बालौँ। बिजुलीसँग नखेलौँ।",
+    "en": "Turn on the light at night. Don't play with electricity.",
+    "ko": "밤에는 불을 켜요. 전기로 장난치지 않아요."
+   }
+  },
+  "cat": {
+   "thr": "बिल्ली",
+   "thrSrc": "tcv",
+   "ne": "बिरालो",
+   "en": "cat",
+   "ko": "고양이",
+   "fov": 16,
+   "say": {
+    "ne": "बिरालो म्याउँ म्याउँ गर्छ।",
+    "en": "The cat says meow.",
+    "ko": "고양이는 야옹야옹 울어요."
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "बिरालोको छाउरो",
+      "en": "kitten",
+      "ko": "새끼 고양이"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "दूध, माछा",
+      "en": "milk, fish",
+      "ko": "우유, 생선"
+     }
+    },
+    {
+     "k": "sound",
+     "v": {
+      "ne": "म्याउँ म्याउँ",
+      "en": "meow",
+      "ko": "야옹"
+     }
+    }
+   ]
+  },
+  "dog": {
+   "thr": "कुकुर",
+   "thrSrc": "tcv",
+   "ne": "कुकुर",
+   "en": "dog",
+   "ko": "개",
+   "emoji": "🐕",
+   "size": 0.8,
+   "say": {
+    "ne": "कुकुरले घर कुर्छ। भुक् भुक्!",
+    "en": "The dog guards the house. Woof!",
+    "ko": "개는 집을 지켜요. 멍멍!"
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "कुकुरको छाउरो",
+      "en": "puppy",
+      "ko": "강아지"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "भात, मासु",
+      "en": "rice, meat",
+      "ko": "밥, 고기"
+     }
+    },
+    {
+     "k": "sound",
+     "v": {
+      "ne": "भुक् भुक्",
+      "en": "woof",
+      "ko": "멍멍"
+     }
+    }
+   ]
+  },
+  "cow": {
+   "thr": "गाई",
+   "thrSrc": "tcv",
+   "ne": "गाई",
+   "en": "cow",
+   "ko": "소",
+   "emoji": "🐄",
+   "size": 1.6,
+   "say": {
+    "ne": "गाईले हामीलाई दूध दिन्छ।",
+    "en": "The cow gives us milk.",
+    "ko": "소는 우리에게 우유를 줘요."
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "बाछो",
+      "en": "calf",
+      "ko": "송아지"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "घाँस",
+      "en": "grass",
+      "ko": "풀"
+     }
+    },
+    {
+     "k": "sound",
+     "v": {
+      "ne": "हम्मा",
+      "en": "moo",
+      "ko": "음매"
+     }
+    }
+   ]
+  },
+  "elephant": {
+   "thr": "हत्ती",
+   "thrSrc": "tcv",
+   "ne": "हात्ती",
+   "en": "elephant",
+   "ko": "코끼리",
+   "emoji": "🐘",
+   "size": 3,
+   "say": {
+    "ne": "हात्ती जङ्गलमा बस्छ। यो धेरै ठूलो हुन्छ।",
+    "en": "The elephant lives in the forest. It is very big.",
+    "ko": "코끼리는 숲에 살아요. 아주 커요."
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "हात्तीको बच्चा",
+      "en": "calf",
+      "ko": "아기 코끼리"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "घाँस, पात",
+      "en": "grass, leaves",
+      "ko": "풀, 잎"
+     }
+    },
+    {
+     "k": "move",
+     "v": {
+      "ne": "हिँड्छ",
+      "en": "walks",
+      "ko": "걸어요"
+     }
+    }
+   ]
+  },
+  "bird": {
+   "thr": "चिडिया",
+   "thrSrc": "tcv",
+   "ne": "चरा",
+   "en": "bird",
+   "ko": "새",
+   "emoji": "🐦",
+   "size": 0.5,
+   "say": {
+    "ne": "चरा आकाशमा उड्छ। चिँ चिँ!",
+    "en": "The bird flies in the sky. Tweet!",
+    "ko": "새는 하늘을 날아요. 짹짹!"
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "चल्ला",
+      "en": "chick",
+      "ko": "새끼 새"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "दाना, कीरा",
+      "en": "grain, insects",
+      "ko": "곡식, 벌레"
+     }
+    },
+    {
+     "k": "move",
+     "v": {
+      "ne": "उड्छ",
+      "en": "flies",
+      "ko": "날아요"
+     }
+    }
+   ]
+  },
+  "fish": {
+   "thr": "मछरी",
+   "thrSrc": "tcv",
+   "ne": "माछा",
+   "en": "fish",
+   "ko": "물고기",
+   "emoji": "🐟",
+   "size": 0.6,
+   "say": {
+    "ne": "माछा पानीमा पौडिन्छ।",
+    "en": "The fish swims in the water.",
+    "ko": "물고기는 물에서 헤엄쳐요."
+   },
+   "facts": [
+    {
+     "k": "baby",
+     "v": {
+      "ne": "भुरा",
+      "en": "fry",
+      "ko": "치어"
+     }
+    },
+    {
+     "k": "food",
+     "v": {
+      "ne": "साना कीरा, झार",
+      "en": "small insects, water plants",
+      "ko": "작은 벌레, 물풀"
+     }
+    },
+    {
+     "k": "move",
+     "v": {
+      "ne": "पौडिन्छ",
+      "en": "swims",
+      "ko": "헤엄쳐요"
+     }
+    }
+   ]
+  },
+  "sun": {
+   "thr": "दिन",
+   "thrSrc": "tcv",
+   "ne": "घाम",
+   "en": "sun",
+   "ko": "해",
+   "fov": 40,
+   "say": {
+    "ne": "घाम लाग्यो! आज मौसम सफा छ।",
+    "en": "The sun is out! The weather is clear today.",
+    "ko": "해가 났어요! 오늘은 날씨가 맑아요."
+   }
+  },
+  "cloud": {
+   "thr": "बादर",
+   "thrSrc": "guess",
+   "ne": "बादल",
+   "en": "cloud",
+   "ko": "구름",
+   "fov": 26,
+   "say": {
+    "ne": "बादल लाग्यो भने पानी पर्न सक्छ।",
+    "en": "When clouds come, it may rain.",
+    "ko": "구름이 끼면 비가 올 수도 있어요."
+   }
+  },
+  "tree": {
+   "thr": "रुख",
+   "thrSrc": "guess",
+   "ne": "रूख",
+   "en": "tree",
+   "ko": "나무",
+   "fov": 36,
+   "say": {
+    "ne": "रूखले हामीलाई छहारी र फल दिन्छ।",
+    "en": "Trees give us shade and fruit.",
+    "ko": "나무는 그늘과 열매를 줘요."
+   }
+  },
+  "shrub": {
+   "thr": "झाडी",
+   "thrSrc": "guess",
+   "ne": "झाडी",
+   "en": "shrub",
+   "ko": "관목(덤불)",
+   "fov": 16,
+   "say": {
+    "ne": "झाडी रूखभन्दा होचो हुन्छ।",
+    "en": "A shrub is shorter than a tree.",
+    "ko": "관목은 나무보다 키가 작아요."
+   }
+  },
+  "flower": {
+   "thr": "फुल",
+   "thrSrc": "guess",
+   "ne": "फूल",
+   "en": "flower",
+   "ko": "꽃",
+   "emoji": "🌼",
+   "size": 0.7,
+   "say": {
+    "ne": "फूल राम्रो र सुगन्धित हुन्छ। फूल नटिपौँ।",
+    "en": "Flowers are pretty and smell nice. Let's not pick them.",
+    "ko": "꽃은 예쁘고 향기로워요. 꺾지 말아요."
+   }
+  },
+  "paddy": {
+   "thr": "धान",
+   "thrSrc": "guess",
+   "ne": "धान",
+   "en": "rice plant",
+   "ko": "벼",
+   "emoji": "🌾",
+   "size": 1.1,
+   "say": {
+    "ne": "तराईका खेतमा धान फल्छ।",
+    "en": "Rice grows in the fields of the Terai.",
+    "ko": "테라이의 논에서 벼가 자라요."
+   }
+  },
+  "root": {
+   "thr": "जर",
+   "thrSrc": "guess",
+   "ne": "जरा",
+   "en": "root",
+   "ko": "뿌리"
+  },
+  "stem": {
+   "thr": "डाँठ",
+   "thrSrc": "guess",
+   "ne": "डाँठ",
+   "en": "stem",
+   "ko": "줄기"
+  },
+  "leaf": {
+   "thr": "पत्ता",
+   "thrSrc": "guess",
+   "ne": "पात",
+   "en": "leaf",
+   "ko": "잎"
+  },
+  "seed": {
+   "thr": "बिया",
+   "thrSrc": "guess",
+   "ne": "बिउ",
+   "en": "seed",
+   "ko": "씨앗"
+  },
+  "water": {
+   "thr": "पानी",
+   "thrSrc": "tcv",
+   "ne": "पानी",
+   "en": "water",
+   "ko": "물"
+  },
+  "banana": {
+   "thr": "केरा",
+   "thrSrc": "guess",
+   "ne": "केरा",
+   "en": "banana",
+   "ko": "바나나",
+   "emoji": "🍌",
+   "size": 0.9,
+   "say": {
+    "ne": "केराले शरीरलाई शक्ति दिन्छ।",
+    "en": "Bananas give us energy.",
+    "ko": "바나나는 힘을 줘요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "शक्ति दिने खाना",
+      "en": "energy food",
+      "ko": "에너지를 주는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "दर्जन (१२ वटा)",
+      "en": "dozen (12)",
+      "ko": "다스(12개)"
+     }
+    }
+   ]
+  },
+  "mango": {
+   "thr": "आम",
+   "thrSrc": "guess",
+   "ne": "आँप",
+   "en": "mango",
+   "ko": "망고",
+   "emoji": "🥭",
+   "size": 0.85,
+   "say": {
+    "ne": "तराईमा गर्मीमा मीठो आँप फल्छ।",
+    "en": "Sweet mangoes grow in the Terai in summer.",
+    "ko": "테라이에서는 여름에 달콤한 망고가 열려요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "रोगसँग लड्ने खाना",
+      "en": "protective food",
+      "ko": "병을 막는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "के.जी.",
+      "en": "kg",
+      "ko": "킬로그램"
+     }
+    }
+   ]
+  },
+  "tomato": {
+   "thr": "टमाटर",
+   "thrSrc": "guess",
+   "ne": "गोलभेँडा",
+   "en": "tomato",
+   "ko": "토마토",
+   "emoji": "🍅",
+   "size": 0.8,
+   "say": {
+    "ne": "गोलभेँडाले रोगसँग लड्न मद्दत गर्छ।",
+    "en": "Tomatoes help us fight illness.",
+    "ko": "토마토는 병을 이기도록 도와줘요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "रोगसँग लड्ने खाना",
+      "en": "protective food",
+      "ko": "병을 막는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "के.जी.",
+      "en": "kg",
+      "ko": "킬로그램"
+     }
+    }
+   ]
+  },
+  "potato": {
+   "thr": "आलु",
+   "thrSrc": "guess",
+   "ne": "आलु",
+   "en": "potato",
+   "ko": "감자",
+   "emoji": "🥔",
+   "size": 0.8,
+   "say": {
+    "ne": "आलुले शक्ति दिन्छ। एक के.जी. आलु दिनुस्।",
+    "en": "Potatoes give energy. One kilo of potatoes, please.",
+    "ko": "감자는 힘을 줘요. 감자 1킬로 주세요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "शक्ति दिने खाना",
+      "en": "energy food",
+      "ko": "에너지를 주는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "के.जी.",
+      "en": "kg",
+      "ko": "킬로그램"
+     }
+    }
+   ]
+  },
+  "egg": {
+   "thr": "अण्डा",
+   "thrSrc": "guess",
+   "ne": "अण्डा",
+   "en": "egg",
+   "ko": "달걀",
+   "emoji": "🥚",
+   "size": 0.7,
+   "say": {
+    "ne": "अण्डाले शरीर बनाउँछ।",
+    "en": "Eggs help our body grow.",
+    "ko": "달걀은 몸을 자라게 해요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "शरीर बनाउने खाना",
+      "en": "body-building food",
+      "ko": "몸을 만드는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "क्रेट (३० वटा)",
+      "en": "tray (30)",
+      "ko": "한 판(30개)"
+     }
+    }
+   ]
+  },
+  "lentils": {
+   "thr": "दाल",
+   "thrSrc": "guess",
+   "ne": "दाल",
+   "en": "lentils",
+   "ko": "렌틸콩(달)",
+   "emoji": "🫘",
+   "size": 0.8,
+   "say": {
+    "ne": "दाल भातले शरीर बलियो बनाउँछ।",
+    "en": "Dal and rice make our body strong.",
+    "ko": "달과 밥은 몸을 튼튼하게 해요."
+   },
+   "facts": [
+    {
+     "k": "group",
+     "v": {
+      "ne": "शरीर बनाउने खाना",
+      "en": "body-building food",
+      "ko": "몸을 만드는 음식"
+     }
+    },
+    {
+     "k": "unit",
+     "v": {
+      "ne": "मानो, पाथी (८ मानो = १ पाथी)",
+      "en": "mana, pathi (8 mana = 1 pathi)",
+      "ko": "마나, 파티(8마나 = 1파티)"
+     }
+    }
+   ]
+  }
+ },
+ "stages": [
+  {
+   "id": "family",
+   "n": 1,
+   "emoji": "👨‍👩‍👧",
+   "color": "#a8432d",
+   "nodes": [
+    "ou_154836",
+    "ou_154936",
+    "ou_155026"
+   ],
+   "title": {
+    "ne": "परिवार, म र समुदाय",
+    "en": "Family, Self & Community",
+    "ko": "가족, 나와 공동체"
+   },
+   "game": {
+    "ne": "गाउँलेहरूलाई भेटौँ",
+    "en": "Meet the Villagers",
+    "ko": "마을 사람들을 만나 봐요"
+   },
+   "placeShort": {
+    "ne": "गाउँको बाटो",
+    "en": "Village path",
+    "ko": "마을 길"
+   },
+   "place": {
+    "ne": "थारु घरको आँगन र घर, विद्यालय, कार्यशालातिर जाने गाउँको बाटो",
+    "en": "Tharu family courtyard and the village path to homes, school and workshops",
+    "ko": "타루 가정의 마당과 집·학교·작업장으로 이어지는 마을 길"
+   },
+   "goal": {
+    "ne": "आफू र परिवारको परिचय दिन, समुदायका मानिसको काम चिन्न र ठूलालाई सघाउन सिक्छौँ।",
+    "en": "Introduce yourself and your family, know what community helpers do, and help elders.",
+    "ko": "나와 가족을 소개하고, 마을 사람들의 역할을 알고, 어른을 돕는 법을 익혀요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "परिवारका सदस्य, छिमेकी, समुदायका सहयोगी",
+     "en": "family members, neighbours, community helpers",
+     "ko": "가족 구성원, 이웃, 지역사회 구성원의 역할"
+    },
+    "english": {
+     "ne": "परिवारको नाता, आफ्नो परिचय, सजिला विशेषण",
+     "en": "family relations, personal intro, simple adjectives",
+     "ko": "가족 관계, 자기소개, 기초 형용사"
+    },
+    "nepali": {
+     "ne": "परिवारको दैनिकी, घरको काममा सघाउने",
+     "en": "family routines, helping at home",
+     "ko": "가족의 일상생활, 집안일 돕기"
+    }
+   },
+   "spots": [
+    {
+     "item": "teacher",
+     "node": "ou_154836",
+     "u": 0.645,
+     "ground": 11
+    },
+    {
+     "item": "mother",
+     "node": "ou_154836",
+     "u": 0.41,
+     "ground": 7
+    },
+    {
+     "item": "grandmother",
+     "node": "ou_154836",
+     "u": 0.52,
+     "ground": 8.5
+    },
+    {
+     "item": "father",
+     "node": "ou_154936",
+     "u": 0.37,
+     "ground": 7
+    },
+    {
+     "item": "farmer",
+     "node": "ou_154936",
+     "u": 0.445,
+     "ground": 10
+    },
+    {
+     "item": "grandfather",
+     "node": "ou_155026",
+     "u": 0.405,
+     "ground": 6.5
+    },
+    {
+     "item": "health",
+     "node": "ou_155026",
+     "u": 0.6,
+     "ground": 7.5
+    }
+   ],
+   "activity": {
+    "type": "match",
+    "prompt": {
+     "ne": "कसले के गर्छ? कार्डलाई ठीक मान्छेमा राख।",
+     "en": "Who does what? Put each card on the right person.",
+     "ko": "누가 무엇을 할까요? 카드를 알맞은 사람에게 놓아요."
+    },
+    "targets": [
+     {
+      "item": "farmer"
+     },
+     {
+      "item": "teacher"
+     },
+     {
+      "item": "health"
+     },
+     {
+      "item": "grandmother"
+     },
+     {
+      "item": "mother"
+     }
+    ],
+    "pieces": [
+     {
+      "id": "grow",
+      "emoji": "🌾",
+      "to": "farmer",
+      "text": {
+       "ne": "खेतमा धान फलाउँछन्",
+       "en": "grows rice in the field",
+       "ko": "논에서 벼를 길러요"
+      },
+      "say": {
+       "ne": "किसानले खेतमा धान फलाउँछन्।",
+       "en": "The farmer grows rice in the field.",
+       "ko": "농부는 논에서 벼를 길러요."
+      }
+     },
+     {
+      "id": "teach",
+      "emoji": "📖",
+      "to": "teacher",
+      "text": {
+       "ne": "विद्यालयमा पढाउनुहुन्छ",
+       "en": "teaches at school",
+       "ko": "학교에서 가르쳐요"
+      },
+      "say": {
+       "ne": "शिक्षक विद्यालयमा पढाउनुहुन्छ।",
+       "en": "The teacher teaches at school.",
+       "ko": "선생님은 학교에서 가르쳐요."
+      }
+     },
+     {
+      "id": "medicine",
+      "emoji": "💊",
+      "to": "health",
+      "text": {
+       "ne": "बिरामीलाई औषधि दिनुहुन्छ",
+       "en": "gives medicine to sick people",
+       "ko": "아픈 사람에게 약을 줘요"
+      },
+      "say": {
+       "ne": "स्वास्थ्यकर्मी बिरामीलाई औषधि दिनुहुन्छ।",
+       "en": "The health worker gives medicine to sick people.",
+       "ko": "보건 요원은 아픈 사람에게 약을 줘요."
+      }
+     },
+     {
+      "id": "water",
+      "emoji": "🥛",
+      "to": "grandmother",
+      "text": {
+       "ne": "म पानी ल्याइदिन्छु",
+       "en": "I bring her water",
+       "ko": "내가 물을 갖다 드려요"
+      },
+      "say": {
+       "ne": "म हजुरआमालाई पानी ल्याइदिन्छु।",
+       "en": "I bring water for my grandmother.",
+       "ko": "나는 할머니께 물을 갖다 드려요."
+      }
+     },
+     {
+      "id": "cook",
+      "emoji": "🍲",
+      "to": "mother",
+      "text": {
+       "ne": "म खाना पकाउन सघाउँछु",
+       "en": "I help her cook",
+       "ko": "요리를 도와요"
+      },
+      "say": {
+       "ne": "म आमालाई खाना पकाउन सघाउँछु।",
+       "en": "I help my mother cook.",
+       "ko": "나는 엄마의 요리를 도와요."
+      }
+     }
+    ]
+   },
+   "start": "ou_154836"
+  },
+  {
+   "id": "hygiene",
+   "n": 2,
+   "emoji": "🧼",
+   "color": "#2f6aa3",
+   "nodes": [
+    "ou_154719"
+   ],
+   "title": {
+    "ne": "शरीर र सरसफाइ",
+    "en": "Human Body & Personal Hygiene",
+    "ko": "신체와 개인위생"
+   },
+   "game": {
+    "ne": "स्वस्थ बानी",
+    "en": "Healthy Habits",
+    "ko": "건강한 생활 습관"
+   },
+   "placeShort": {
+    "ne": "चापाकल र भान्सा",
+    "en": "Hand pump & kitchen",
+    "ko": "손 펌프와 부엌"
+   },
+   "place": {
+    "ne": "गाउँको चापाकल, हात धुने ठाउँ र थारु भान्सा",
+    "en": "Village hand pump (tube well), washing station and Tharu kitchen",
+    "ko": "마을 손 펌프(지하수 펌프), 세면 공간, 타루 가정의 부엌"
+   },
+   "goal": {
+    "ne": "शरीरका अङ्ग चिन्न र रोगबाट बचाउने सरसफाइका बानी सिक्छौँ।",
+    "en": "Name body parts and practise daily hygiene habits that prevent disease.",
+    "ko": "신체 부위를 알고, 병을 막는 위생 습관을 익혀요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "दैनिक सरसफाइ, सफा पिउने पानी, रोगबाट बचाउ",
+     "en": "daily cleaning routines, safe drinking water, preventing disease",
+     "ko": "일상 청결 습관, 안전한 식수, 질병 예방"
+    },
+    "english": {
+     "ne": "शरीरका अङ्ग, सरसफाइका बानी",
+     "en": "body parts, cleanliness habits",
+     "ko": "신체 부위, 청결·위생 습관"
+    },
+    "nepali": {
+     "ne": "शरीर र इन्द्रियसम्बन्धी शब्द",
+     "en": "descriptive / sensory body words",
+     "ko": "신체 부위·감각 관련 어휘"
+    }
+   },
+   "spots": [
+    {
+     "item": "pump",
+     "node": "ou_154719",
+     "u": 0.53,
+     "ground": 8.5
+    },
+    {
+     "item": "pot",
+     "node": "ou_154719",
+     "u": 0.505,
+     "ground": 8
+    },
+    {
+     "item": "soap",
+     "node": "ou_154719",
+     "u": 0.55,
+     "ground": 8
+    },
+    {
+     "item": "toothbrush",
+     "node": "ou_154719",
+     "u": 0.567,
+     "ground": 8.3
+    },
+    {
+     "item": "comb",
+     "node": "ou_154719",
+     "u": 0.475,
+     "ground": 7
+    },
+    {
+     "item": "nailcutter",
+     "node": "ou_154719",
+     "u": 0.455,
+     "ground": 6.8
+    }
+   ],
+   "activity": {
+    "type": "match",
+    "prompt": {
+     "ne": "कुन सामान शरीरको कुन भागका लागि? सामानलाई ठीक ठाउँमा राख।",
+     "en": "Which tool is for which body part? Put each tool in its place.",
+     "ko": "어떤 물건이 몸의 어디에 쓰일까요? 알맞은 곳에 놓아요."
+    },
+    "targets": [
+     {
+      "item": "teeth"
+     },
+     {
+      "item": "hands"
+     },
+     {
+      "item": "nails"
+     },
+     {
+      "item": "hair"
+     },
+     {
+      "item": "face"
+     }
+    ],
+    "pieces": [
+     {
+      "item": "toothbrush",
+      "to": "teeth",
+      "say": {
+       "ne": "ब्रसले दाँत माझौँ।",
+       "en": "Brush your teeth.",
+       "ko": "칫솔로 이를 닦아요."
+      }
+     },
+     {
+      "item": "soap",
+      "to": "hands",
+      "say": {
+       "ne": "साबुनले हात धोऔँ।",
+       "en": "Wash your hands with soap.",
+       "ko": "비누로 손을 씻어요."
+      }
+     },
+     {
+      "item": "nailcutter",
+      "to": "nails",
+      "say": {
+       "ne": "नङ काटौँ।",
+       "en": "Cut your nails.",
+       "ko": "손톱을 깎아요."
+      }
+     },
+     {
+      "item": "comb",
+      "to": "hair",
+      "say": {
+       "ne": "काइँयोले कपाल कोरौँ।",
+       "en": "Comb your hair.",
+       "ko": "빗으로 머리를 빗어요."
+      }
+     },
+     {
+      "item": "pump",
+      "to": "face",
+      "say": {
+       "ne": "सफा पानीले मुख धोऔँ।",
+       "en": "Wash your face with clean water.",
+       "ko": "깨끗한 물로 얼굴을 씻어요."
+      }
+     }
+    ]
+   },
+   "start": "ou_154719"
+  },
+  {
+   "id": "day",
+   "n": 3,
+   "emoji": "🕗",
+   "color": "#b07a22",
+   "nodes": [
+    "ou_155419",
+    "ou_155457"
+   ],
+   "title": {
+    "ne": "दैनिक जीवन, बानी र समय",
+    "en": "Daily Life, Routines & Time",
+    "ko": "일상생활, 생활 습관과 시간"
+   },
+   "game": {
+    "ne": "गाउँमा मेरो दिन",
+    "en": "My Village Day",
+    "ko": "나의 하루"
+   },
+   "placeShort": {
+    "ne": "थारु घर",
+    "en": "Tharu home",
+    "ko": "타루 가정집"
+   },
+   "place": {
+    "ne": "भित्तेघडी र नेपाली पात्रो भएको थारु घरभित्र (सुत्ने कोठा, पढ्ने ठाउँ, पिँढी)",
+    "en": "Inside a Tharu home (bedroom, study corner, porch) with a wall clock and Nepali calendar",
+    "ko": "벽시계와 네팔 달력이 있는 타루 가정의 실내(침실, 공부 공간, 마루)"
+   },
+   "goal": {
+    "ne": "दिनका काम क्रमैसँग मिलाउन, घडी हेर्न र आफ्नो दिनचर्या भन्न सिक्छौँ।",
+    "en": "Put daily tasks in order, read clock times and describe your day.",
+    "ko": "하루 일을 순서대로 놓고, 시계를 읽고, 나의 하루를 말해요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "दैनिक तालिका, ठीक आसन, बिजुली र चुम्बकका सामान",
+     "en": "daily schedules, proper posture, electrical / magnetic tools",
+     "ko": "일과표, 바른 자세, 전기·자석을 활용하는 도구"
+    },
+    "english": {
+     "ne": "घडी हेर्ने (बजे), हप्ताका बार, विद्यालयको दिनचर्या",
+     "en": "telling time (o'clock), days of the week, school routines",
+     "ko": "정각 읽기, 요일, 학교생활 및 일과"
+    },
+    "nepali": {
+     "ne": "नेपाली पात्रो पढ्ने, बिहानदेखि रातिसम्मको क्रम",
+     "en": "reading the Nepali calendar, morning-to-night sequence",
+     "ko": "네팔 달력 읽기, 아침부터 저녁까지의 일과 순서"
+    }
+   },
+   "spots": [
+    {
+     "item": "bag",
+     "node": "ou_155419",
+     "u": 0.62,
+     "ground": 6
+    },
+    {
+     "item": "clock",
+     "node": "ou_155457",
+     "u": 0.645,
+     "v": 0.43,
+     "dist": 14.3
+    },
+    {
+     "item": "calendar",
+     "node": "ou_155457",
+     "u": 0.585,
+     "v": 0.45,
+     "dist": 13.2
+    },
+    {
+     "item": "door",
+     "node": "ou_155457",
+     "u": 0.505,
+     "v": 0.475,
+     "dist": 17.18
+    },
+    {
+     "item": "window",
+     "node": "ou_155457",
+     "u": 0.72,
+     "v": 0.395,
+     "dist": 19.72
+    },
+    {
+     "item": "lamp",
+     "node": "ou_155457",
+     "u": 0.61,
+     "v": 0.54,
+     "dist": 9.73
+    }
+   ],
+   "activity": {
+    "type": "match",
+    "ordered": true,
+    "prompt": {
+     "ne": "कुन काम कति बजे? कार्डलाई ठीक घडीमा राख।",
+     "en": "What do you do at what time? Put each card on the right clock.",
+     "ko": "어떤 일을 몇 시에 할까요? 카드를 알맞은 시계에 놓아요."
+    },
+    "targets": [
+     {
+      "id": "c6",
+      "clock": 6,
+      "label": {
+       "ne": "बिहान ६ बजे",
+       "en": "6 o'clock in the morning",
+       "ko": "아침 6시"
+      }
+     },
+     {
+      "id": "c9",
+      "clock": 9,
+      "label": {
+       "ne": "बिहान ९ बजे",
+       "en": "9 o'clock in the morning",
+       "ko": "아침 9시"
+      }
+     },
+     {
+      "id": "c10",
+      "clock": 10,
+      "label": {
+       "ne": "बिहान १० बजे",
+       "en": "10 o'clock in the morning",
+       "ko": "오전 10시"
+      }
+     },
+     {
+      "id": "c4",
+      "clock": 4,
+      "label": {
+       "ne": "दिउँसो ४ बजे",
+       "en": "4 o'clock in the afternoon",
+       "ko": "오후 4시"
+      }
+     },
+     {
+      "id": "c8",
+      "clock": 8,
+      "label": {
+       "ne": "राति ८ बजे",
+       "en": "8 o'clock at night",
+       "ko": "밤 8시"
+      }
+     }
+    ],
+    "pieces": [
+     {
+      "id": "wake",
+      "emoji": "🌅",
+      "to": "c6",
+      "text": {
+       "ne": "उठ्ने",
+       "en": "wake up",
+       "ko": "일어나기"
+      },
+      "say": {
+       "ne": "म बिहान ६ बजे उठ्छु।",
+       "en": "I wake up at six o'clock.",
+       "ko": "나는 아침 6시에 일어나요."
+      }
+     },
+     {
+      "id": "eat",
+      "emoji": "🍛",
+      "to": "c9",
+      "text": {
+       "ne": "भात खाने",
+       "en": "eat rice",
+       "ko": "밥 먹기"
+      },
+      "say": {
+       "ne": "म बिहान ९ बजे भात खान्छु।",
+       "en": "I eat rice at nine o'clock.",
+       "ko": "나는 아침 9시에 밥을 먹어요."
+      }
+     },
+     {
+      "id": "school",
+      "emoji": "🎒",
+      "to": "c10",
+      "text": {
+       "ne": "विद्यालय जाने",
+       "en": "go to school",
+       "ko": "학교 가기"
+      },
+      "say": {
+       "ne": "म १० बजे विद्यालय जान्छु।",
+       "en": "I go to school at ten o'clock.",
+       "ko": "나는 10시에 학교에 가요."
+      }
+     },
+     {
+      "id": "play",
+      "emoji": "⚽",
+      "to": "c4",
+      "text": {
+       "ne": "खेल्ने",
+       "en": "play",
+       "ko": "놀기"
+      },
+      "say": {
+       "ne": "म दिउँसो ४ बजे खेल्छु।",
+       "en": "I play at four o'clock.",
+       "ko": "나는 오후 4시에 놀아요."
+      }
+     },
+     {
+      "id": "sleep",
+      "emoji": "😴",
+      "to": "c8",
+      "text": {
+       "ne": "सुत्ने",
+       "en": "sleep",
+       "ko": "잠자기"
+      },
+      "say": {
+       "ne": "म राति ८ बजे सुत्छु।",
+       "en": "I go to sleep at eight o'clock.",
+       "ko": "나는 밤 8시에 자요."
+      }
+     }
+    ]
+   },
+   "start": "ou_155419"
+  },
+  {
+   "id": "animals",
+   "n": 4,
+   "emoji": "🐄",
+   "color": "#2f5d4a",
+   "nodes": [
+    "ou_154450",
+    "ou_154607",
+    "ou_154641"
+   ],
+   "title": {
+    "ne": "जनावर र चराचुरुङ्गी",
+    "en": "Animals & Birds",
+    "ko": "동물과 새"
+   },
+   "game": {
+    "ne": "जनावरका घर र खाना",
+    "en": "Animal Homes & Helpers",
+    "ko": "동물들의 집과 생활"
+   },
+   "placeShort": {
+    "ne": "गोठ र जङ्गलको छेउ",
+    "en": "Shed & forest edge",
+    "ko": "가축 우리와 숲 가장자리"
+   },
+   "place": {
+    "ne": "गाउँको गोठ, पोखरी वा नदी किनार र जङ्गलको छेउ",
+    "en": "Village livestock shed, pond / riverbank and forest edge",
+    "ko": "마을의 가축 우리, 연못이나 강가, 숲 가장자리"
+   },
+   "goal": {
+    "ne": "जनावरको नाम, खाना, बासस्थान र बच्चाको नाम सिक्छौँ; थारु नामलाई नेपाली र अङ्ग्रेजीसँग जोड्छौँ।",
+    "en": "Learn animal names, food, homes and baby names, and connect Tharu names to Nepali and English.",
+    "ko": "동물의 이름·먹이·사는 곳·새끼 이름을 익히고, 타루어 이름을 네팔어·영어와 연결해요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "जनावर कसरी चल्छन् (पौडिने, उड्ने, घस्रने, उफ्रने), बासस्थान, खाना",
+     "en": "animal movement (swim, fly, crawl, jump), habitats, diets",
+     "ko": "동물의 이동 방식(헤엄·날기·기어가기·뛰기), 서식지, 먹이"
+    },
+    "english": {
+     "ne": "घरपालुवा र चिडियाखानाका जनावर, आवाज, जनावरका घर",
+     "en": "domestic / zoo animals, sounds, animal homes",
+     "ko": "가축 및 동물원 동물, 울음소리, 동물의 보금자리"
+    },
+    "nepali": {
+     "ne": "जनावरका कथा, जनावरका बच्चाका नाम",
+     "en": "animal fables, baby animal names",
+     "ko": "동물 우화, 새끼 동물의 이름"
+    }
+   },
+   "spots": [
+    {
+     "item": "bird",
+     "node": "ou_154450",
+     "u": 0.12,
+     "v": 0.36,
+     "dist": 9
+    },
+    {
+     "item": "elephant",
+     "node": "ou_154450",
+     "u": 0.86,
+     "ground": 24
+    },
+    {
+     "item": "cow",
+     "node": "ou_154607",
+     "u": 0.78,
+     "ground": 14
+    },
+    {
+     "item": "dog",
+     "node": "ou_154607",
+     "u": 0.4,
+     "ground": 7
+    },
+    {
+     "item": "fish",
+     "node": "ou_154641",
+     "u": 0.33,
+     "ground": 8
+    },
+    {
+     "item": "cat",
+     "node": "ou_154641",
+     "u": 0.625,
+     "v": 0.632,
+     "dist": 3.85
+    }
+   ],
+   "activity": {
+    "type": "match",
+    "prompt": {
+     "ne": "कुन जनावर कहाँ बस्छ? जनावरलाई उसको घरमा पुर्‍याऊ।",
+     "en": "Where does each animal live? Take it home.",
+     "ko": "어떤 동물이 어디에 살까요? 동물을 집에 데려다줘요."
+    },
+    "targets": [
+     {
+      "id": "shed",
+      "emoji": "🛖",
+      "label": {
+       "ne": "गोठ",
+       "en": "cowshed",
+       "ko": "외양간"
+      }
+     },
+     {
+      "id": "forest",
+      "emoji": "🌳",
+      "label": {
+       "ne": "जङ्गल",
+       "en": "forest",
+       "ko": "숲"
+      }
+     },
+     {
+      "id": "nest",
+      "emoji": "🪹",
+      "label": {
+       "ne": "गुँड",
+       "en": "nest",
+       "ko": "둥지"
+      }
+     },
+     {
+      "id": "pond",
+      "emoji": "🌊",
+      "label": {
+       "ne": "पोखरी",
+       "en": "pond",
+       "ko": "연못"
+      }
+     },
+     {
+      "id": "house",
+      "emoji": "🏠",
+      "label": {
+       "ne": "घर",
+       "en": "house",
+       "ko": "집"
+      }
+     }
+    ],
+    "pieces": [
+     {
+      "item": "cow",
+      "to": "shed",
+      "say": {
+       "ne": "गाई गोठमा बस्छ।",
+       "en": "The cow lives in the cowshed.",
+       "ko": "소는 외양간에 살아요."
+      }
+     },
+     {
+      "item": "elephant",
+      "to": "forest",
+      "say": {
+       "ne": "हात्ती जङ्गलमा बस्छ।",
+       "en": "The elephant lives in the forest.",
+       "ko": "코끼리는 숲에 살아요."
+      }
+     },
+     {
+      "item": "bird",
+      "to": "nest",
+      "say": {
+       "ne": "चरा गुँडमा बस्छ।",
+       "en": "The bird lives in a nest.",
+       "ko": "새는 둥지에 살아요."
+      }
+     },
+     {
+      "item": "fish",
+      "to": "pond",
+      "say": {
+       "ne": "माछा पोखरीमा बस्छ।",
+       "en": "The fish lives in the pond.",
+       "ko": "물고기는 연못에 살아요."
+      }
+     },
+     {
+      "item": "dog",
+      "to": "house",
+      "say": {
+       "ne": "कुकुर घरमा बस्छ।",
+       "en": "The dog lives at home.",
+       "ko": "개는 집에 살아요."
+      }
+     },
+     {
+      "item": "cat",
+      "to": "house",
+      "say": {
+       "ne": "बिरालो घरमा बस्छ।",
+       "en": "The cat lives at home.",
+       "ko": "고양이는 집에 살아요."
+      }
+     }
+    ]
+   },
+   "start": "ou_154450"
+  },
+  {
+   "id": "plants",
+   "n": 5,
+   "emoji": "🌱",
+   "color": "#5d7f2a",
+   "nodes": [
+    "ou_155310",
+    "ou_155343"
+   ],
+   "title": {
+    "ne": "बिरुवा, वातावरण र प्रकृति",
+    "en": "Plants, Environment & Nature",
+    "ko": "식물, 환경과 자연"
+   },
+   "game": {
+    "ne": "तराई रोपौँ, जोगाऔँ",
+    "en": "Grow & Protect the Terai",
+    "ko": "테라이를 가꾸고 보호해요"
+   },
+   "placeShort": {
+    "ne": "करेसाबारी र खेत",
+    "en": "Garden & fields",
+    "ko": "텃밭과 논밭"
+   },
+   "place": {
+    "ne": "गाउँको करेसाबारी, खेत र तराईमाथिको खुला आकाश",
+    "en": "Village kitchen garden, fields and open sky over the Terai",
+    "ko": "마을 텃밭, 농경지, 테라이 평야가 내려다보이는 탁 트인 공간"
+   },
+   "goal": {
+    "ne": "बिरुवाका मुख्य भाग र बिरुवाका प्रकार चिन्छौँ।",
+    "en": "Identify the main plant parts and kinds of plants.",
+    "ko": "식물의 주요 부분을 구분하고 식물의 종류를 알아요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "जडीबुटी, झाडी र रूख, बिरुवाका भाग, सफा वातावरण, मौसम र तराईको भू-बनोट",
+     "en": "herbs / shrubs / trees, plant parts, clean environment, weather & Terai landforms",
+     "ko": "풀·관목·나무, 식물의 각 부분, 깨끗한 환경, 날씨와 테라이 지형"
+    },
+    "english": {
+     "ne": "बगैँचा, फूल, मौसमका शब्द",
+     "en": "gardening, flowers, weather words",
+     "ko": "정원 가꾸기, 꽃, 날씨 관련 어휘"
+    },
+    "nepali": {
+     "ne": "प्रकृतिका कविता, तराई र पहाडको वर्णन",
+     "en": "nature poems, Terai / hill descriptions",
+     "ko": "자연을 주제로 한 시, 테라이와 산악 지역"
+    }
+   },
+   "spots": [
+    {
+     "item": "sun",
+     "node": "ou_155310",
+     "u": 0.215,
+     "v": 0.41,
+     "dist": 60
+    },
+    {
+     "item": "paddy",
+     "node": "ou_155310",
+     "u": 0.47,
+     "ground": 9
+    },
+    {
+     "item": "tree",
+     "node": "ou_155343",
+     "u": 0.45,
+     "v": 0.42,
+     "dist": 23.32
+    },
+    {
+     "item": "shrub",
+     "node": "ou_155343",
+     "u": 0.43,
+     "v": 0.495,
+     "dist": 27.58
+    },
+    {
+     "item": "flower",
+     "node": "ou_155343",
+     "u": 0.53,
+     "ground": 5.5
+    },
+    {
+     "item": "cloud",
+     "node": "ou_155343",
+     "u": 0.87,
+     "v": 0.372,
+     "dist": 60
+    }
+   ],
+   "activity": {
+    "type": "grow",
+    "prompt": {
+     "ne": "बिउ रोप, पानी हाल र बिरुवा हुर्काऊ। त्यसपछि बिरुवाका भाग छोऊ।",
+     "en": "Plant the seed, water it and let it grow. Then touch the plant parts.",
+     "ko": "씨앗을 심고 물을 주어 키워요. 그다음 식물의 부분을 눌러 봐요."
+    },
+    "waterings": 3,
+    "parts": [
+     {
+      "item": "root",
+      "say": {
+       "ne": "जराले माटोबाट पानी लिन्छ।",
+       "en": "Roots take water from the soil.",
+       "ko": "뿌리는 흙에서 물을 빨아들여요."
+      }
+     },
+     {
+      "item": "stem",
+      "say": {
+       "ne": "डाँठले बिरुवालाई ठाडो राख्छ।",
+       "en": "The stem holds the plant up.",
+       "ko": "줄기는 식물을 똑바로 세워 줘요."
+      }
+     },
+     {
+      "item": "leaf",
+      "say": {
+       "ne": "पातले घामबाट खाना बनाउँछ।",
+       "en": "Leaves make food from sunlight.",
+       "ko": "잎은 햇빛으로 양분을 만들어요."
+      }
+     },
+     {
+      "item": "flower",
+      "say": {
+       "ne": "फूलबाट बिउ बन्छ।",
+       "en": "Seeds come from the flower.",
+       "ko": "꽃에서 씨앗이 생겨요."
+      }
+     }
+    ]
+   },
+   "start": "ou_155310"
+  },
+  {
+   "id": "market",
+   "n": 6,
+   "emoji": "🧺",
+   "color": "#c2362b",
+   "nodes": [
+    "ou_155057",
+    "ou_155204",
+    "ou_155236"
+   ],
+   "title": {
+    "ne": "बजार, किनमेल र खाना",
+    "en": "Market, Shopping & Food",
+    "ko": "시장, 장보기와 음식"
+   },
+   "game": {
+    "ne": "हाट बजारको पसले",
+    "en": "The Haat Bazaar Shopkeeper",
+    "ko": "하트 바자르 가게 주인"
+   },
+   "placeShort": {
+    "ne": "हाट बजार",
+    "en": "Haat Bazaar",
+    "ko": "하트 바자르"
+   },
+   "place": {
+    "ne": "तरकारी, फलफूल र अन्नका डालाले भरिएको गाउँको हाट बजार",
+    "en": "A busy village Haat Bazaar (open-air market) with produce and grain baskets",
+    "ko": "농산물과 곡식 바구니가 진열된 마을의 재래시장(하트 바자르)"
+   },
+   "goal": {
+    "ne": "५० सम्म गन्न, परिमाण तुलना गर्न र स्थानीय नापतौल (मानो, पाथी, के.जी.) बुझ्न सिक्छौँ।",
+    "en": "Count objects up to 50, compare quantities and understand local units (mana, pathi, kg).",
+    "ko": "50까지 세고, 양을 비교하고, 지역 단위(마나·파티·kg)를 이해해요."
+   },
+   "subjects": {
+    "serophero": {
+     "ne": "सन्तुलित खाना (शक्ति दिने र शरीर बनाउने), स्थानीय औजार, आम्दानी र खर्च",
+     "en": "balanced diet (energy vs body-building foods), local tools, income / expenses",
+     "ko": "균형 잡힌 식단(에너지·신체 발달 음식), 지역 도구, 수입과 지출"
+    },
+    "english": {
+     "ne": "फलफूल र तरकारी किन्ने, १–५० सम्म गन्ने, पसलेसँगको कुराकानी",
+     "en": "buying fruit / vegetables, counting 1–50, shopkeeper dialogues",
+     "ko": "과일·채소 사기, 1~50 세기, 가게 기본 대화"
+    },
+    "nepali": {
+     "ne": "हाट बजारका कथा, स्थानीय नापतौल (मानो, पाथी, के.जी.)",
+     "en": "Haat Bazaar stories, local weights (mana, pathi, kg)",
+     "ko": "하트 바자르 이야기, 전통 도량형(마나, 파티) 및 kg"
+    }
+   },
+   "spots": [
+    {
+     "item": "banana",
+     "node": "ou_155057",
+     "u": 0.4,
+     "ground": 6
+    },
+    {
+     "item": "mango",
+     "node": "ou_155057",
+     "u": 0.455,
+     "ground": 6.5
+    },
+    {
+     "item": "tomato",
+     "node": "ou_155204",
+     "u": 0.4,
+     "ground": 6
+    },
+    {
+     "item": "potato",
+     "node": "ou_155204",
+     "u": 0.455,
+     "ground": 6.5
+    },
+    {
+     "item": "egg",
+     "node": "ou_155236",
+     "u": 0.4,
+     "ground": 6
+    },
+    {
+     "item": "lentils",
+     "node": "ou_155236",
+     "u": 0.455,
+     "ground": 6.5
+    }
+   ],
+   "activity": {
+    "type": "count",
+    "prompt": {
+     "ne": "किनमेलको सूची हेर। ठीक सङ्ख्यामा सामान डालोमा राख।",
+     "en": "Look at the shopping list. Put the right number of things in the basket.",
+     "ko": "장보기 목록을 보고, 알맞은 수만큼 바구니에 담아요."
+    },
+    "list": [
+     {
+      "item": "banana",
+      "n": 5
+     },
+     {
+      "item": "tomato",
+      "n": 8
+     },
+     {
+      "item": "egg",
+      "n": 12
+     }
+    ],
+    "total": {
+     "options": [
+      23,
+      25,
+      27
+     ]
+    }
+   },
+   "start": "ou_155057"
+  }
+ ],
+ "start": "ou_154836",
+ "audio": {},
+ "nodes": [
+  {
+   "id": "ou_154326",
+   "label": "01",
+   "zone": "lot",
+   "media": "360",
+   "pano": "assets/panos/ou_154326.jpg",
+   "thumb": "assets/thumbs/ou_154326.jpg",
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "yaw": 0.0,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154407"
+   ],
+   "panoBytes": 1333782
+  },
+  {
+   "id": "ou_154407",
+   "label": "02",
+   "zone": "lot",
+   "media": "360",
+   "pano": "assets/panos/ou_154407.jpg",
+   "thumb": "assets/thumbs/ou_154407.jpg",
+   "position": [
+    -2.898,
+    0.0,
+    -4.674
+   ],
+   "yaw": 12.0,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154326",
+    "ou_154450"
+   ],
+   "panoBytes": 1213184
+  },
+  {
+   "id": "ou_154450",
+   "label": "03",
+   "zone": "lot",
+   "media": "360",
+   "pano": "assets/panos/ou_154450.jpg",
+   "thumb": "assets/thumbs/ou_154450.jpg",
+   "position": [
+    -5.739,
+    0.0,
+    -9.384
+   ],
+   "yaw": 344.3,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154407",
+    "ou_154607"
+   ],
+   "panoBytes": 1126167
+  },
+  {
+   "id": "ou_154607",
+   "label": "04",
+   "zone": "lot",
+   "media": "360",
+   "pano": "assets/panos/ou_154607.jpg",
+   "thumb": "assets/thumbs/ou_154607.jpg",
+   "position": [
+    -8.555,
+    0.0,
+    -14.108
+   ],
+   "yaw": 325.2,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154450",
+    "ou_154641"
+   ],
+   "panoBytes": 1061782
+  },
+  {
+   "id": "ou_154641",
+   "label": "05",
+   "zone": "lot",
+   "media": "360",
+   "pano": "assets/panos/ou_154641.jpg",
+   "thumb": "assets/thumbs/ou_154641.jpg",
+   "position": [
+    -11.559,
+    0.0,
+    -18.716
+   ],
+   "yaw": 3.1,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154607",
+    "ou_154719"
+   ],
+   "panoBytes": 1041607
+  },
+  {
+   "id": "ou_154719",
+   "label": "06",
+   "zone": "ebenezer",
+   "media": "3dgs",
+   "pano": "assets/panos/ou_154719.jpg",
+   "thumb": "assets/thumbs/ou_154719.jpg",
+   "position": [
+    -14.259,
+    0.0,
+    -23.507
+   ],
+   "yaw": 356.3,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154641",
+    "ou_154836"
+   ],
+   "splat": "assets/splats/ou_154719.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 5,
+   "splatBytes": 11432836,
+   "panoBytes": 1014793
+  },
+  {
+   "id": "ou_154836",
+   "label": "07",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_154836.jpg",
+   "thumb": "assets/thumbs/ou_154836.jpg",
+   "position": [
+    -16.841,
+    0.0,
+    -28.363
+   ],
+   "yaw": 348.6,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154719",
+    "ou_154936"
+   ],
+   "panoBytes": 982012
+  },
+  {
+   "id": "ou_154936",
+   "label": "08",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_154936.jpg",
+   "thumb": "assets/thumbs/ou_154936.jpg",
+   "position": [
+    -20.189,
+    0.0,
+    -32.727
+   ],
+   "yaw": 358.6,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154836",
+    "ou_155026"
+   ],
+   "panoBytes": 944149
+  },
+  {
+   "id": "ou_155026",
+   "label": "09",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_155026.jpg",
+   "thumb": "assets/thumbs/ou_155026.jpg",
+   "position": [
+    -23.12,
+    0.0,
+    -37.381
+   ],
+   "yaw": 355.6,
+   "camHeight": 1.55,
+   "links": [
+    "ou_154936",
+    "ou_155057"
+   ],
+   "panoBytes": 933781
+  },
+  {
+   "id": "ou_155057",
+   "label": "10",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_155057.jpg",
+   "thumb": "assets/thumbs/ou_155057.jpg",
+   "position": [
+    -26.124,
+    0.0,
+    -41.988
+   ],
+   "yaw": 2.2,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155026",
+    "ou_155204"
+   ],
+   "panoBytes": 941309
+  },
+  {
+   "id": "ou_155204",
+   "label": "11",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_155204.jpg",
+   "thumb": "assets/thumbs/ou_155204.jpg",
+   "position": [
+    -28.915,
+    0.0,
+    -46.727
+   ],
+   "yaw": 355.0,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155057",
+    "ou_155236"
+   ],
+   "panoBytes": 956840
+  },
+  {
+   "id": "ou_155236",
+   "label": "12",
+   "zone": "road",
+   "media": "360",
+   "pano": "assets/panos/ou_155236.jpg",
+   "thumb": "assets/thumbs/ou_155236.jpg",
+   "position": [
+    -31.821,
+    0.0,
+    -51.397
+   ],
+   "yaw": 344.4,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155204",
+    "ou_155310"
+   ],
+   "panoBytes": 963175
+  },
+  {
+   "id": "ou_155310",
+   "label": "13",
+   "zone": "front",
+   "media": "360",
+   "pano": "assets/panos/ou_155310.jpg",
+   "thumb": "assets/thumbs/ou_155310.jpg",
+   "position": [
+    -34.446,
+    0.0,
+    -56.23
+   ],
+   "yaw": 342.9,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155236",
+    "ou_155343"
+   ],
+   "panoBytes": 878217
+  },
+  {
+   "id": "ou_155343",
+   "label": "14",
+   "zone": "front",
+   "media": "360",
+   "pano": "assets/panos/ou_155343.jpg",
+   "thumb": "assets/thumbs/ou_155343.jpg",
+   "position": [
+    -37.303,
+    0.0,
+    -60.93
+   ],
+   "yaw": 345.8,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155310",
+    "ou_155419"
+   ],
+   "panoBytes": 914474
+  },
+  {
+   "id": "ou_155419",
+   "label": "15",
+   "zone": "front",
+   "media": "360",
+   "pano": "assets/panos/ou_155419.jpg",
+   "thumb": "assets/thumbs/ou_155419.jpg",
+   "position": [
+    -40.185,
+    0.0,
+    -65.614
+   ],
+   "yaw": 356.0,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155343",
+    "ou_155457"
+   ],
+   "panoBytes": 1039480
+  },
+  {
+   "id": "ou_155457",
+   "label": "16",
+   "zone": "sanhak",
+   "media": "3dgs",
+   "pano": "assets/panos/ou_155457.jpg",
+   "thumb": "assets/thumbs/ou_155457.jpg",
+   "position": [
+    -43.067,
+    0.0,
+    -70.299
+   ],
+   "yaw": 341.3,
+   "camHeight": 1.55,
+   "links": [
+    "ou_155419"
+   ],
+   "splat": "assets/splats/ou_155457.difix.sog",
+   "splatKind": "trained",
+   "splatTransform": {
+    "position": [
+     0,
+     0,
+     0
+    ],
+    "yaw": 0,
+    "scale": 1
+   },
+   "splatCrop": 20,
+   "walkRadius": 5,
+   "splatBytes": 10710142,
+   "panoBytes": 1240227
+  }
+ ]
+}
